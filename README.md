@@ -10,7 +10,7 @@
 Để sử dụng ứng dụng hiệu quả, bạn cần nắm rõ các chỉ số sau:
 
 * **Chánh Niệm:** Đơn vị đo lường sự tỉnh giác. Mỗi lần bạn nhận biết được hơi thở hoặc trạng thái tâm trí và chạm vào màn hình, một "Chánh Niệm" sẽ được ghi lại.
-* **Chánh niệm:** Trạng thái khi tần suất ghi nhận (Niệm) duy trì ở mức ổn định và đều đặn.
+* **Chánh niệm tốt:** Trạng thái khi tần suất ghi nhận (Niệm) duy trì ở mức ổn định và đều đặn.
 * **Thất niệm:** Trạng thái khi tâm trí bị xao nhãng hoặc buồn ngủ, dẫn đến việc không có hoặc có rất ít ghi nhận trong một khoảng thời gian.
 * **Chuỗi Tinh Tấn ():** Số ngày liên tiếp bạn thực hiện tu tập.
 
@@ -21,8 +21,8 @@
 ### 1. Quản Lý Mục Tiêu Đa Dạng
 
 * **Hai loại mục tiêu chính:**
-* **Thiền Định:** Theo dõi thời gian ngồi thiền và đếm số lần ghi nhận chánh niệm ("Sati"). Giao diện có vòng tròn hít thở để hỗ trợ định tâm.
-* **⚡ Công Việc (Tiêu chuẩn):** Đồng hồ đếm ngược truyền thống dùng cho công việc, học tập (tương tự Pomodoro) hoặc các thói quen khác.
+* **ॐ Thiền Định:** Theo dõi thời gian ngồi thiền và đếm số lần ghi nhận chánh niệm ("Sati"). Giao diện có vòng tròn hít thở để hỗ trợ định tâm.
+* **⚡ Công Việc:** Đồng hồ đếm ngược truyền thống dùng cho công việc, học tập (tương tự Pomodoro) hoặc các thói quen khác.
 
 
 * **Tùy biến:** Tự đặt mục tiêu hàng ngày (số phút), thời gian cần dành để hoàn thành mục tiêu, màu sắc đại diện và danh mục quản lý.
@@ -31,7 +31,7 @@
 
 * **Chế độ Thiền:**
 * Hiệu ứng hình ảnh "hơi thở" (phồng/xẹp) giúp điều hòa nhịp thở.
-* **Chạm để đếm (Tap-to-Track):** Chạm vào màn hình (hoặc click chuột) mỗi khi bạn ghi nhận được sự chú tâm quay về hơi thở. Số đếm này được tích lũy thành điểm Chánh niệm (Sati).
+* **Chạm để đếm:** Chạm vào màn hình (hoặc click chuột) mỗi khi bạn ghi nhận được sự chú tâm quay về hơi thở. Số đếm này được tích lũy thành điểm Chánh niệm (Sati).
 <img width="445" height="457" alt="image" src="https://github.com/user-attachments/assets/1f578774-1c46-4ede-b80b-5c35fa25a12d" />
 
 * **Chế độ Tập trung:** Đồng hồ đếm ngược với thanh tiến trình trực quan.
@@ -68,7 +68,7 @@
 
 #### 2. Bắt Đầu Một Phiên
 
-* Tại thẻ mục tiêu, nhấn nút **Play (▶)** (với Công việc) hoặc nút **Om** (với Thiền).
+* Tại thẻ mục tiêu, nhấn nút **Play (▶)** (với Công việc) hoặc nút **ॐ** (với Thiền).
 * **Trong lúc thiền:** Chạm vào màn hình mỗi khi bạn thấy mình tỉnh thức quay về đối tượng thiền.
 * Kết thúc phiên, ứng dụng sẽ hiện bảng tổng kết để bạn ghi thêm nhật ký.
 
