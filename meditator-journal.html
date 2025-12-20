@@ -154,8 +154,17 @@
         .session-date { font-weight: 600; color: var(--text); }
         .session-notes { color: var(--text-light); font-style: italic; margin-top: 2px; display: block;}
 
-        /* --- Calendar --- */
+       /* --- Calendar --- */
         .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-top: 20px; }
+        
+        /* New Header for Weekdays */
+        .calendar-header {
+            display: contents; /* Allows children to sit in the main grid */
+        }
+        .cal-head-day {
+            text-align: center; font-size: 11px; color: var(--text-light); font-weight: bold; padding-bottom: 5px;
+        }
+
         .calendar-day { 
             aspect-ratio: 1; background: var(--bg); border-radius: 4px; 
             display: flex; align-items: center; justify-content: center;
@@ -261,7 +270,7 @@
 <nav class="sidebar">
         <div class="logo"><i class="fas fa-hourglass-half"></i></div>
         <div class="nav-item active" onclick="app.switchView('dashboard')">
-            <i class="fas fa-th-large"></i><span class="nav-text">Journal</span>
+            <i class="fas fa-spa"></i><span class="nav-text">Journal</span>
         </div>
         <div class="nav-item" onclick="app.switchView('calendar')">
             <i class="fas fa-calendar-alt"></i><span class="nav-text">Calendar</span>
@@ -270,7 +279,7 @@
             <i class="fas fa-chart-pie"></i><span class="nav-text">Statistics</span>
         </div>
         <div class="nav-item" onclick="app.switchView('achievements')">
-            <i class="fas fa-trophy"></i><span class="nav-text">Achievements</span>
+            <i class="fas fa-trophy"></i><span class="nav-text">Achieve</span>
         </div>
         
         <div style="margin-top: auto;" class="desktop-only"></div>
@@ -283,7 +292,6 @@
         </div>
     </nav>
 
-    <input type="file" id="import-file" style="display:none" onchange="app.importData(this)" accept=".json">
 
     <main class="main">
         <header>
@@ -298,7 +306,6 @@
                     <div class="daily-bar-bg"><div id="daily-bar-fill" class="daily-bar-fill"></div></div>
                     <span class="stat-label">Daily Goal</span>
                 </div>
-                <div style="width: 1px; height: 30px; background: var(--border);"></div>
                 <div class="stat-item">
                     <span class="stat-val" id="streak-disp">0 🔥</span>
                     <span class="stat-label">Streak</span>
@@ -307,6 +314,17 @@
                     <span class="stat-val" id="xp-disp">0 XP</span>
                     <span class="stat-label">Level <span id="level-disp">1</span></span>
                 </div>
+				 <div class="stat-item clickable" onclick="app.openIntroModal()">
+    <span class="stat-val" style="
+        border: 2px solid var(--text-light); 
+        border-radius: 50%; 
+        width: 24px; 
+        height: 24px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        font-size: 14px;">?</span>
+</div>
                 <button class="btn" onclick="app.openChoiceModal()">
                     <i class="fas fa-plus"></i> New Goal
                 </button>
@@ -334,39 +352,47 @@
         </section>
 
         <section id="view-reports" class="view-section">
-            <div class="dashboard-grid" style="grid-template-columns: 1fr;">
-                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
-                    <div class="card">
-                        <h3>Goals</h3>
-                        <div style="height: 300px; display:flex; justify-content:center;">
-                            <canvas id="goalBreakdownChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <button class="btn btn-secondary" style="padding: 5px 10px;" onclick="app.changeReportWeek(-1)"><i class="fas fa-chevron-left"></i></button>
-                            <h3 id="weekly-report-title">Weekly Focus</h3>
-                            <button class="btn btn-secondary" style="padding: 5px 10px;" onclick="app.changeReportWeek(1)"><i class="fas fa-chevron-right"></i></button>
-                        </div>
-                        <div style="height: 300px;">
-                            <canvas id="weeklyChart"></canvas>
-                        </div>
-                    </div>
-                 </div>
-                 
-                 <div class="card" style="margin-top: 20px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <button class="btn btn-secondary" style="padding: 5px 10px;" onclick="app.changeReportMonth(-1)"><i class="fas fa-chevron-left"></i></button>
-                        <h3 id="monthly-report-title">Monthly Focus</h3>
-                        <button class="btn btn-secondary" style="padding: 5px 10px;" onclick="app.changeReportMonth(1)"><i class="fas fa-chevron-right"></i></button>
-                    </div>
-                    <div style="height: 300px;">
-                        <canvas id="monthlyChart"></canvas>
-                    </div>
-                </div>
+    <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 25px;">
+        <button class="btn" id="btn-rep-time" onclick="app.setReportMode('time')">
+            <i class="fas fa-clock"></i> Time
+        </button>
+        <button class="btn btn-secondary" id="btn-rep-mind" onclick="app.setReportMode('mindfulness')">
+            <i class="fas fa-spa"></i> Mindfulness
+        </button>
+    </div>
 
+    <div class="dashboard-grid" style="grid-template-columns: 1fr;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
+            <div class="card">
+                <h3 id="breakdown-title">Time Chart</h3>
+                <div style="height: 300px; display:flex; justify-content:center;">
+                    <canvas id="goalBreakdownChart"></canvas>
+                </div>
             </div>
-        </section>
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <button class="btn btn-secondary" style="padding: 5px 10px;" onclick="app.changeReportWeek(-1)"><i class="fas fa-chevron-left"></i></button>
+                    <h3 id="weekly-report-title">Weekly Focus</h3>
+                    <button class="btn btn-secondary" style="padding: 5px 10px;" onclick="app.changeReportWeek(1)"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div style="height: 300px;">
+                    <canvas id="weeklyChart"></canvas>
+                </div>
+            </div>
+            </div>
+            
+            <div class="card" style="margin-top: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <button class="btn btn-secondary" style="padding: 5px 10px;" onclick="app.changeReportMonth(-1)"><i class="fas fa-chevron-left"></i></button>
+                <h3 id="monthly-report-title">Monthly Focus</h3>
+                <button class="btn btn-secondary" style="padding: 5px 10px;" onclick="app.changeReportMonth(1)"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div style="height: 300px;">
+                <canvas id="monthlyChart"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
 
         <section id="view-achievements" class="view-section">
             <div class="card">
@@ -382,13 +408,13 @@
             <div class="choice-btn-container">
                 <div class="choice-card" onclick="app.openModal(null, 'meditation')">
                     <i class="fas fa-spa" style="color: var(--zen);"></i>
-                    <h3>Meditation</h3>
+                    <h3>Meditate</h3>
                     <p style="font-size:12px; color:var(--text-light); margin-top:5px;">Track Mindfulness</p>
                 </div>
                 <div class="choice-card" onclick="app.openModal(null, 'standard')">
                     <i class="fas fa-tasks" style="color: var(--primary);"></i>
                     <h3>Activity</h3>
-                    <p style="font-size:12px; color:var(--text-light); margin-top:5px;">Track Time</p>
+                    <p style="font-size:12px; color:var(--text-light); margin-top:5px;">Track Progress</p>
                 </div>
             </div>
             <button class="btn btn-secondary" style="width:100%; margin-top:20px;" onclick="app.closeChoiceModal()">Cancel</button>
@@ -422,13 +448,13 @@
                 <div class="form-group" style="background: rgba(16, 185, 129, 0.1); padding: 10px; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.3);">
                     <label style="color: var(--success);">Daily Target</label>
                     <input type="number" id="g-daily-target" class="form-control" min="0" value="30">
-                    <small id="g-daily-hint" style="color: var(--success); font-size: 11px;">Mins per day</small>
+                    <small id="g-daily-hint" style="color: var(--success); font-size: 11px;">Minutes per day</small>
                 </div>
                 
                 <div class="form-group">
                     <label>Achieve in</label>
                     <input type="number" id="g-lifetime-target" class="form-control" required min="1" value="1000">
-                    <small id="g-life-hint" style="color: var(--text-light); font-size: 11px;">Total Minutes</small>
+                    <small id="g-life-hint" style="color: var(--text-light); font-size: 11px;">Minutes</small>
                 </div>
                 
                 <div style="display: flex; justify-content: flex-end; gap: 10px;">
@@ -470,7 +496,7 @@
             <div class="form-group">
                 <textarea id="backup-data-area" class="form-control" 
                     style="height: 80px; font-family: monospace; font-size: 10px; color: var(--text-light);" 
-                    placeholder="JSON data..."></textarea>
+                    placeholder="Paste JSON data here..."></textarea>
             </div>
             <div style="display: flex; gap: 10px; justify-content: center;">
                 <button class="btn" style="flex: 1;" onclick="app.copyBackupData()">
@@ -482,8 +508,13 @@
             </div>
         </div>
 
-        <div style="margin-top: 20px; display: flex; justify-content: center;">
-            <button class="btn btn-secondary" style="width: 50%; border-color: var(--danger); color: var(--danger);" onclick="app.closeBackupModal()">Close</button>
+        <div style="margin-top: 20px; display: flex; gap: 10px;">
+    <button class="btn btn-secondary" style="flex: 1;" onclick="app.clearBackupArea()">
+        <i class="fas fa-eraser"></i> Clear
+    </button>
+    <button class="btn btn-secondary" style="flex: 1; border-color: var(--danger); color: var(--danger);" onclick="app.closeBackupModal()">
+        Close
+    </button>
         </div>
     </div>
 </div>
@@ -571,22 +602,189 @@
     </div>
 
     <div class="modal" id="day-details-modal" style="overflow-y: auto;">
-        <div class="modal-content">
-            <h2 id="day-modal-title" style="margin-bottom: 20px; font-size: 20px;">Day Details</h2>
-            <div style="height: 150px; overflow-y: auto; position: relative; margin-bottom: 20px;">
-                <canvas id="dayBreakdownChart"></canvas>
-            </div>
-            <h3 style="font-size: 14px; color: var(--text-light); border-bottom: 1px solid var(--border); padding-bottom: 5px; margin-bottom: 10px;">Activity Log</h3>
-            <div id="day-session-list" style="max-height: 100px; overflow-y: auto;"></div>
-            <div style="display: flex; justify-content: flex-end; margin-top: 20px; border-top: 1px solid var(--border); padding-top: 15px;">
-                <button class="btn btn-secondary" onclick="app.closeDayModal()">Close</button>
-            </div>
+    <div class="modal-content">
+        <h2 id="day-modal-title" style="margin-bottom: 10px; font-size: 20px;">Day Details</h2>
+        
+        <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 15px;">
+            <button class="btn" id="btn-modal-time" style="padding: 5px 15px; font-size: 12px;" onclick="app.switchDayChart('time')">
+                <i class="fas fa-clock"></i> Time
+            </button>
+            <button class="btn btn-secondary" id="btn-modal-mind" style="padding: 5px 15px; font-size: 12px;" onclick="app.switchDayChart('mindfulness')">
+                <i class="fas fa-spa"></i> Mindfulness
+            </button>
+        </div>
+
+        <div style="height: 200px; position: relative; margin-bottom: 20px;">
+            <canvas id="dayBreakdownChart"></canvas>
+        </div>
+
+        <h3 style="font-size: 14px; color: var(--text-light); border-bottom: 1px solid var(--border); padding-bottom: 5px; margin-bottom: 10px;">Activity Log</h3>
+        <div id="day-session-list" style="max-height: 150px; overflow-y: auto;"></div>
+        
+        <div style="display: flex; justify-content: flex-end; margin-top: 20px; border-top: 1px solid var(--border); padding-top: 15px;">
+            <button class="btn btn-secondary" onclick="app.closeDayModal()">Close</button>
         </div>
     </div>
+</div>
 
     <div id="toast" class="toast">
         <i class="fas fa-info-circle"></i> <span id="toast-msg">Message</span>
     </div>
+	<div class="modal" id="intro-modal" style="z-index: 9999;">
+    <div class="modal-content" style="max-width: 800px; width: 95%; max-height: 90vh; display: flex; flex-direction: column; padding: 0;">
+        
+        <div style="padding: 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--surface); border-radius: 16px 16px 0 0;">
+            <h2 style="margin: 0;">✨ Meditator's Journal</h2>
+            <button class="btn-icon" onclick="app.closeIntroModal()" style="color: var(--text-light); background: transparent;"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div style="padding: 20px; overflow-y: auto; line-height: 1.6; color: var(--text-light);">
+            
+            <p><strong>Meditator's Journal</strong> is an application designed to support both spiritual practice and daily work. The app helps practitioners track progress in their professional tasks as well as meditation sessions, recording levels of awareness through "Mindfulness" counts, and visualizing mental states via real-time charts and graphs.</p>
+            
+            <img src="1en.png" alt="Graph Preview" style="width: 100%; border-radius: 8px; border: 1px solid var(--border); margin: 10px 0;">
+
+            <h3 style="color: var(--text); margin-top: 20px;">✨ Core Concepts</h3>
+            <p>To use the app effectively, you should understand the following indicators:</p>
+            <ul style="padding-left: 20px; margin-bottom: 15px;">
+                <li><strong>Mindfulness (Sati):</strong> A unit for measuring awareness. Every time you recognize your breath or mental state and touch the screen, one "Mindfulness" point is recorded.</li>
+                <li><strong>Mindful State:</strong> A state where the frequency of recording (Sati) remains stable and regular.</li>
+                <li><strong>Unmindful:</strong> A state where the mind is distracted or drowsy, resulting in few or no recordings over a period of time.</li>
+                <li><strong>Diligence Streak:</strong> The number of consecutive days you have maintained your practice.</li>
+            </ul>
+
+            <h3 style="color: var(--text); margin-top: 20px;">✨ Key Features</h3>
+            
+            <h4 style="color: var(--primary);">1. Diverse Goal Management</h4>
+            <ul style="padding-left: 20px;">
+                <li><strong>Two main types of goals:</strong>
+                    <ul>
+                        <li><strong>ॐ Meditation:</strong> Tracks meditation duration and counts mindfulness ("Sati") recognitions. The interface features a breathing circle to support focus.</li>
+                        <li><strong>⚡ Work:</strong> A traditional countdown timer used for work, study (similar to Pomodoro), or other habits.</li>
+                    </ul>
+                </li>
+                <li><strong>Customization:</strong> Set daily goals (minutes), target completion time, representative colors, and management categories.</li>
+            </ul>
+
+            <h4 style="color: var(--primary); margin-top: 15px;">2. Interactive Timer & Recording</h4>
+            <ul style="padding-left: 20px;">
+                <li><strong>Meditation Mode:</strong>
+                    <ul>
+                        <li>Visual "breathing" effect (expand/contract) helps regulate breathing rhythm.</li>
+                        <li><strong>Tap-to-Track:</strong> Touch the screen (or click) every time you acknowledge your focus returning to the breath. These counts accumulate as Mindfulness (Sati) points.</li>
+                    </ul>
+                </li>
+            </ul>
+            <div style="text-align: center; margin: 15px 0;">
+                <img src="2en.png" alt="Meditation Mode" style="max-width: 300px; width: 100%; border-radius: 8px; border: 1px solid var(--border);">
+            </div>
+            <ul style="padding-left: 20px;">
+                <li><strong>Focus Mode:</strong> A countdown timer with a visual progress bar.</li>
+                <li><strong>Manual Entry:</strong> Forgot to start the timer? You can manually log a session or edit previous records.</li>
+            </ul>
+
+            <h4 style="color: var(--primary); margin-top: 15px;">3. Statistics & Data Analysis</h4>
+            <ul style="padding-left: 20px;">
+                <li><strong>Dashboard:</strong> View today's progress relative to your set goals.</li>
+                <li><strong>Practice Calendar:</strong> A grid heatmap showing daily practice intensity. Darker colors represent longer practice durations.</li>
+                <li><strong>Visual Charts:</strong>
+                    <ul>
+                        <li><strong>Session Graph:</strong> Review mindfulness levels <em>within a specific session</em> (line chart).</li>
+                        <li><strong>Weekly/Monthly Statistics:</strong> Compare performance over real-time intervals.</li>
+                        <li><strong>Distribution:</strong> A pie chart showing the percentage of time or mindfulness spent on different goals.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4 style="color: var(--primary); margin-top: 15px;">4. Privacy & Data Security</h4>
+            <ul style="padding-left: 20px;">
+                <li><strong>Fully Offline:</strong> 100% of data is stored directly in your browser. No data is sent to any server.</li>
+                <li><strong>Backup & Restore:</strong> Easily export data to a <code>.json</code> file for safekeeping or to transfer to another device.</li>
+            </ul>
+
+            <hr style="border: 0; border-top: 1px solid var(--border); margin: 25px 0;">
+            <h3 style="color: var(--text); margin-top: 20px;">🚀 Usage Guide</h3>
+            
+            <strong style="display:block; margin-bottom:10px; color: var(--text);">1. Create a New Goal</strong>
+            <ul style="padding-left: 20px; margin-bottom: 15px;">
+                <li>Click the <strong>"New Goal"</strong> button on the main screen.</li>
+                <li>Select the type: <strong>Meditation</strong> or <strong>Work</strong>.</li>
+                <li>Enter a name, choose a color, and set the goal time (e.g., 30 mins/day).</li>
+            </ul>
+
+            <strong style="display:block; margin-bottom:10px; color: var(--text);">2. Start a Session</strong>
+            <ul style="padding-left: 20px; margin-bottom: 15px;">
+                <li>On the goal card, click the <strong>Play (▶)</strong> button (for Work) or the <strong>ॐ</strong> button (for Meditation).</li>
+                <li><strong>During Meditation:</strong> Tap the screen whenever you find yourself mindfully returning to the meditation object.</li>
+                <li>At the end of the session, a summary panel will appear for you to add journal notes.</li>
+            </ul>
+
+            <strong style="display:block; margin-bottom:10px; color: var(--text);">3. View Statistics</strong>
+            <ul style="padding-left: 20px; margin-bottom: 15px;">
+                <li>Select the <strong>"Statistics"</strong> tab on the sidebar to view charts.</li>
+                <li>Select the <strong>"Calendar"</strong> tab to see your history.</li>
+            </ul>
+
+            <hr style="border: 0; border-top: 1px solid var(--border); margin: 25px 0;">
+            <h3 style="color: var(--text); margin-top: 20px;">✨ Practice Achievement System</h3>
+            
+            <p><strong>Consistency Milestones (Streak):</strong></p>
+            <table class="intro-table" style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px;">
+                <thead>
+                    <tr style="background: var(--bg);">
+                        <th style="padding: 8px; border: 1px solid var(--border); text-align: left;">Title</th>
+                        <th style="padding: 8px; border: 1px solid var(--border); text-align: left;">Condition</th>
+                        <th style="padding: 8px; border: 1px solid var(--border); text-align: left;">Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td style="padding: 8px; border: 1px solid var(--border);">Effort</td><td style="padding: 8px; border: 1px solid var(--border);">3 days</td><td style="padding: 8px; border: 1px solid var(--border);">Initially overcoming inertia.</td></tr>
+                    <tr><td style="padding: 8px; border: 1px solid var(--border);">Striving</td><td style="padding: 8px; border: 1px solid var(--border);">10 days</td><td style="padding: 8px; border: 1px solid var(--border);">Starting to form a habit.</td></tr>
+                    <tr><td style="padding: 8px; border: 1px solid var(--border);">Diligence</td><td style="padding: 8px; border: 1px solid var(--border);">30 days</td><td style="padding: 8px; border: 1px solid var(--border);">Habit is becoming stable.</td></tr>
+                    <tr><td style="padding: 8px; border: 1px solid var(--border);">Ardor</td><td style="padding: 8px; border: 1px solid var(--border);">60 days</td><td style="padding: 8px; border: 1px solid var(--border);">Practice becomes firm and steady.</td></tr>
+                    <tr><td style="padding: 8px; border: 1px solid var(--border);">Viriya-sambojjhanga</td><td style="padding: 8px; border: 1px solid var(--border);">365 days</td><td style="padding: 8px; border: 1px solid var(--border);">Extraordinary perseverance.</td></tr>
+                </tbody>
+            </table>
+
+            <p><strong>Mindfulness Milestones (Sati):</strong></p>
+            <table class="intro-table" style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px;">
+                <thead>
+                   <tr style="background: var(--bg);">
+                        <th style="padding: 8px; border: 1px solid var(--border); text-align: left;">Level</th>
+                        <th style="padding: 8px; border: 1px solid var(--border); text-align: left;">Sati Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td style="padding: 8px; border: 1px solid var(--border);">Beginner</td><td style="padding: 8px; border: 1px solid var(--border);">5,000</td></tr>
+                    <tr><td style="padding: 8px; border: 1px solid var(--border);">Practitioner</td><td style="padding: 8px; border: 1px solid var(--border);">10,000</td></tr>
+                    <tr><td style="padding: 8px; border: 1px solid var(--border);">Yogi</td><td style="padding: 8px; border: 1px solid var(--border);">20,000</td></tr>
+                    <tr><td style="padding: 8px; border: 1px solid var(--border);">Meditator</td><td style="padding: 8px; border: 1px solid var(--border);">80,000</td></tr>
+                    <tr><td style="padding: 8px; border: 1px solid var(--border);">Meditation Master</td><td style="padding: 8px; border: 1px solid var(--border);">500,000</td></tr>
+                </tbody>
+            </table>
+
+            <div style="background: rgba(251, 191, 36, 0.1); border: 1px solid var(--warning); padding: 15px; border-radius: 8px; color: #fbbf24; font-size: 13px;">
+                <strong>⚠️ Important Data Notice:</strong>
+                <ul style="margin: 5px 0 0 15px;">
+                    <li>Your data is stored in the browser's <strong>Local Storage</strong>.</li>
+                    <li><strong>Do not clear browser history/cache</strong> without backing up, or your data will be lost.</li>
+                    <li><strong>How to Backup:</strong> Go to the left sidebar, select <strong>"Backup"</strong> to download the file.</li>
+                    <li><strong>How to Restore:</strong> Select <strong>"Restore"</strong> and upload your backup file.</li>
+                </ul>
+            </div>
+            
+             <div style="margin-top: 20px; text-align: center; color: var(--text-light); font-size: 12px; border-top: 1px solid var(--border); padding-top: 10px;">
+                <strong>Technologies:</strong> HTML5, CSS3, JS (ES6+).<br>
+                <strong>Libraries:</strong> <a href="https://www.chartjs.org/" target="_blank" style="color: var(--primary); text-decoration: none;">Chart.js</a>, <a href="https://fontawesome.com/" target="_blank" style="color: var(--primary); text-decoration: none;">FontAwesome</a>.<br>
+                Download Link & Source Code: <a href="https://github.com/buddhanussati/meditator-journal"><b>here.</b></a> Wishing you peace and diligence!
+            </div>
+        </div>
+        
+        <div style="padding: 15px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; background: var(--surface); border-radius: 0 0 16px 16px;">
+            <button class="btn btn-secondary" onclick="app.closeIntroModal()">Close</button>
+        </div>
+    </div>
+</div>
     <audio id="bell" src="bell.mp3" preload="auto"></audio>
 
     <script>
@@ -635,16 +833,25 @@
                 this.currentMonth = new Date(this.today.getFullYear(), this.today.getMonth(), 1); 
                 this.currentWeekStart = this.getStartOfWeek(this.today); 
                 this.charts = { weekly: null, breakdown: null, monthly: null, dayChart: null, session: null };
-                
+                this.reportMode = 'time'; // Mặc định là xem thời gian
                 this.meditationState = {
                     active: false, paused: false, goalId: null, count: 0,
                     startTime: null, timerRef: null, remainingSeconds: 0,
                     totalDurationSeconds: 0, touches: [] 
                 };
-
+this.currentViewDate = null; // Biến nhớ ngày đang xem trong modal
+this.dayChartMode = 'time';  // Chế độ mặc định của modal
                 this.init();
             }
-            
+  openIntroModal() {
+        const modal = document.getElementById('intro-modal');
+        if (modal) modal.style.display = 'flex';
+    }
+
+closeIntroModal() {
+    document.getElementById('intro-modal').style.display = 'none';
+    localStorage.setItem('intro_seen', 'true'); // Save so it doesn't pop up every time
+}          
            // Fix: Week starts on Monday
             getStartOfWeek(date) {
                 const d = new Date(date);
@@ -673,6 +880,9 @@
                     console.error("Error during init:", err);
                     alert("App failed to initialize. Try resetting data via the sidebar button.");
                 }
+				if (!localStorage.getItem('intro_seen')) {
+        this.openIntroModal();
+    }
             }
 
             save() {
@@ -1074,7 +1284,7 @@ concludeMeditationSession(type = 'manual') {
     if (!log || !log.touches) return;
 
     document.getElementById('graph-modal').style.display = 'flex';
-    document.getElementById('graph-date').innerText = new Date(log.timestamp).toLocaleString('vi-VN');
+    document.getElementById('graph-date').innerText = new Date(log.timestamp).toLocaleString('en-GB');
 
     const ctx = document.getElementById('sessionGraph').getContext('2d');
     if (this.charts.session) this.charts.session.destroy();
@@ -1191,7 +1401,7 @@ gradient.addColorStop(1, 'rgba(167, 139, 250, 0.05)');   // Đáy: Trong suốt 
                 const btn = document.getElementById('btn-save-goal');
                 const catSelect = document.getElementById('g-cat');
                 catSelect.innerHTML = '';
-                const cats = type === 'meditation' ? ['Sitting Meditation', 'Walking Meditation'] : ['Work', 'Study', 'Health', 'Creative', 'Merit', 'Other'];
+                const cats = type === 'meditation' ? ['Sitting Meditation', 'Walking Meditation', 'Bhavana'] : ['Work', 'Study', 'Health', 'Creative', 'Merit', 'Other'];
                 cats.forEach(c => { const opt = document.createElement('option'); opt.value = c; opt.innerText = c; catSelect.appendChild(opt); });
 
                 const dailyHint = document.getElementById('g-daily-hint');
@@ -1217,21 +1427,36 @@ gradient.addColorStop(1, 'rgba(167, 139, 250, 0.05)');   // Đáy: Trong suốt 
                     document.getElementById('g-name').value = '';
                     document.getElementById('g-color').value = type === 'meditation' ? '#a78bfa' : '#818cf8';
                     document.getElementById('g-lifetime-target').value = 1000;
-                    document.getElementById('g-daily-target').value = 30;
+                    document.getElementById('g-daily-target').value = 100;
                     title.innerText = type === 'meditation' ? 'New Meditation Goal' : 'New Activity Goal'; btn.innerText = 'Create';
                 }
                 modal.style.display = 'flex'; 
             }
             closeModal() { document.getElementById('goal-modal').style.display = 'none'; }
             
-            renderCalendar() {
+                        renderCalendar() {
                 const grid = document.getElementById('calendar-grid');
                 grid.innerHTML = '';
                 const y = this.currentMonth.getFullYear(); const m = this.currentMonth.getMonth();
-                document.getElementById('cal-month-year').innerText = new Date(y, m).toLocaleString('default', { month: 'long', year: 'numeric' });
-                const firstDay = new Date(y, m, 1).getDay();
+                document.getElementById('cal-month-year').innerText = new Date(y, m).toLocaleString('en-GB', { month: 'long', year: 'numeric' });
+                
+                // 
+                const headerDiv = document.createElement('div');
+                headerDiv.className = 'calendar-header';
+                ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d => {
+                    const h = document.createElement('div'); h.className = 'cal-head-day'; h.innerText = d;
+                    grid.appendChild(h);
+                });
+
+                // Calculate blanks for Monday start
+                // new Date(y, m, 1).getDay() -> 0(Sun), 1(Mon)...
+                const firstDayRaw = new Date(y, m, 1).getDay();
+                // If Mon(1) -> 0 blanks. If Sun(0) -> 6 blanks.
+                const blankSlots = firstDayRaw === 0 ? 6 : firstDayRaw - 1;
+
                 const daysInMonth = new Date(y, m + 1, 0).getDate();
-                for(let i=0; i<firstDay; i++) { grid.appendChild(document.createElement('div')); }
+                
+                for(let i=0; i<blankSlots; i++) { grid.appendChild(document.createElement('div')); }
                 for(let i=1; i<=daysInMonth; i++) {
                     const dStr = `${y}-${String(m+1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
                     const dayEl = document.createElement('div');
@@ -1247,137 +1472,307 @@ gradient.addColorStop(1, 'rgba(167, 139, 250, 0.05)');   // Đáy: Trong suốt 
                     grid.appendChild(dayEl);
                 }
             }
-
+switchDayChart(mode) {
+    this.dayChartMode = mode;
+    
+    // Cập nhật giao diện nút
+    const btnTime = document.getElementById('btn-modal-time');
+    const btnMind = document.getElementById('btn-modal-mind');
+    
+    if (mode === 'time') {
+        btnTime.className = 'btn';
+        btnMind.className = 'btn btn-secondary';
+    } else {
+        btnTime.className = 'btn btn-secondary';
+        btnMind.className = 'btn';
+    }
+    
+    // Vẽ lại chart
+    if (this.currentViewDate) {
+        this.renderDayChartOnly(this.currentViewDate);
+    }
+}
 openDayStats(dateStr) {
-                 const modal = document.getElementById('day-details-modal');
-                 const ctx = document.getElementById('dayBreakdownChart').getContext('2d');
-                 
-                 document.getElementById('day-modal-title').innerText = new Date(dateStr).toLocaleDateString('vi-VN');
-                 
-                 // Sort logs by time (newest first)
-                 const dayLogs = this.data.logs.filter(l => l.date === dateStr).sort((a,b) => b.timestamp - a.timestamp);
-                 
-                 // Prepare Chart Data
-                 const goalStats = {};
-                 dayLogs.forEach(log => {
-                     if(!goalStats[log.goalId]) {
-                         const goal = this.data.goals.find(g => g.id === log.goalId);
-                         goalStats[log.goalId] = { name: goal ? goal.name : 'Đã xóa', color: goal ? goal.color : '#ccc', minutes: 0 };
-                     }
-                     goalStats[log.goalId].minutes += log.minutes;
-                 });
-                 
-                 if(this.charts.dayChart) this.charts.dayChart.destroy();
-                 this.charts.dayChart = new Chart(ctx, {
-                     type: 'doughnut',
-                     data: { labels: Object.values(goalStats).map(s => s.name), datasets: [{ data: Object.values(goalStats).map(s => s.minutes), backgroundColor: Object.values(goalStats).map(s => s.color), borderWidth: 1, borderColor: '#1f2937' }] },
-                     options: { maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#9ca3af' } } } }
-                 });
+    this.currentViewDate = dateStr;
+    const modal = document.getElementById('day-details-modal');
+    document.getElementById('day-modal-title').innerText = new Date(dateStr).toLocaleDateString('en-GB', {weekday: 'long', day: 'numeric', month: 'numeric'});
+    
+    // Reset về chế độ time khi mới mở
+    this.switchDayChart('time'); 
 
-                 // --- LIST GENERATION WITH GRAPH BUTTON ---
-                 const listContainer = document.getElementById('day-session-list');
-                 listContainer.innerHTML = dayLogs.length ? '' : '<p class="empty-state">Không có hoạt động.</p>';
-                 
-                 const ul = document.createElement('ul'); 
-                 ul.style.listStyle = 'none';
-                 
-                 dayLogs.forEach(log => {
-                     const goal = this.data.goals.find(g => g.id === log.goalId);
-                     const li = document.createElement('li');
-                     li.style.cssText = 'padding: 8px 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 13px; align-items:center;';
-                     
-                     // 1. Check if we need a graph button (Meditation type + has touch data)
-                     let graphBtnHtml = '';
-                     if (goal && goal.type === 'meditation' && log.touches && log.touches.length > 0) {
-                         graphBtnHtml = `<button class="btn-icon" style="background:transparent; color:var(--zen); height:24px; width:24px; margin-right:5px; cursor:pointer;" onclick="app.showSessionGraph('${log.timestamp}')" title="Xem biểu đồ"><i class="fas fa-chart-area" style="font-size:12px;"></i></button>`;
-                     }
+    // 1. RENDER LIST (Luôn hiển thị đầy đủ cả Time và Sati)
+    const dayLogs = this.data.logs.filter(l => l.date === dateStr).sort((a,b) => b.timestamp - a.timestamp);
+    const listContainer = document.getElementById('day-session-list');
+    listContainer.innerHTML = dayLogs.length ? '' : '<p class="empty-state">No Activities.</p>';
+    
+    const ul = document.createElement('ul'); 
+    ul.style.listStyle = 'none';
+    
+    dayLogs.forEach(log => {
+        const goal = this.data.goals.find(g => g.id === log.goalId);
+        const li = document.createElement('li');
+        li.style.cssText = 'padding: 8px 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 13px; align-items:center;';
+        
+        // Nút xem biểu đồ sóng não (nếu có touch data)
+        let graphBtnHtml = '';
+        if (goal && goal.type === 'meditation' && log.touches && log.touches.length > 0) {
+            graphBtnHtml = `<button class="btn-icon" style="background:transparent; color:var(--zen); height:24px; width:24px; margin-right:5px; cursor:pointer;" onclick="app.showSessionGraph('${log.timestamp}')"><i class="fas fa-chart-area" style="font-size:12px;"></i></button>`;
+        }
 
-                     // 2. Build the HTML
-                     const leftSide = `<div><span style="font-weight:600; color:${goal?goal.color:'#ccc'}">${goal?goal.name:'Đã xóa'}</span><span style="margin-left:5px;">${log.minutes}p</span></div>`;
-                     
-                     const rightSide = `<div style="display:flex; align-items:center;">
-                                            ${graphBtnHtml}
-                                            <div style="font-size: 11px; color: var(--text-light); width:35px; text-align:right;">
-                                                ${new Date(log.timestamp).toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'})}
-                                            </div>
-                                        </div>`;
+        // Hiển thị số Sati (nếu có)
+        const satiCount = log.count !== undefined ? log.count : (log.touches ? log.touches.length : 0);
+        const satiInfo = satiCount > 0 ? `<span style="color: var(--zen); font-size: 11px; margin-left: 5px; font-weight:bold;">(${satiCount} mindfulness)</span>` : '';
 
-                     li.innerHTML = leftSide + rightSide;
-                     ul.appendChild(li);
-                 });
-                 listContainer.appendChild(ul);
-                 modal.style.display = 'flex';
-            }
+        const leftSide = `<div>
+                           <span style="font-weight:600; color:${goal?goal.color:'#ccc'}">${goal?goal.name:'Đã xóa'}</span>
+                           <span style="margin-left:5px;">${log.minutes}p</span>
+                           ${satiInfo}
+                         </div>`;
+        
+        const rightSide = `<div style="display:flex; align-items:center;">
+                               ${graphBtnHtml}
+                               <div style="font-size: 11px; color: var(--text-light); width:35px; text-align:right;">
+                                   ${new Date(log.timestamp).toLocaleTimeString('en-GB', {hour: '2-digit', minute:'2-digit'})}
+                               </div>
+                           </div>`;
+
+        li.innerHTML = leftSide + rightSide;
+        ul.appendChild(li);
+    });
+    listContainer.appendChild(ul);
+    
+    modal.style.display = 'flex';
+}
+
+// Hàm riêng để vẽ chart trong modal
+renderDayChartOnly(dateStr) {
+    const ctx = document.getElementById('dayBreakdownChart').getContext('2d');
+    const isMindfulness = this.dayChartMode === 'mindfulness';
+    const unitLabel = isMindfulness ? 'mindfulness' : 'mins';
+
+    const dayLogs = this.data.logs.filter(l => l.date === dateStr);
+    const goalStats = {};
+
+    dayLogs.forEach(log => {
+        // Nếu đang xem mode chánh niệm, chỉ lấy log có số liệu đó
+        if (isMindfulness) {
+             const val = log.count !== undefined ? log.count : (log.touches ? log.touches.length : 0);
+             if (val === 0) return;
+        }
+
+        if(!goalStats[log.goalId]) {
+            const goal = this.data.goals.find(g => g.id === log.goalId);
+            goalStats[log.goalId] = { 
+                name: goal ? goal.name : 'Đã xóa', 
+                color: goal ? goal.color : '#ccc', 
+                value: 0 
+            };
+        }
+        
+        if (isMindfulness) {
+            goalStats[log.goalId].value += (log.count !== undefined ? log.count : (log.touches ? log.touches.length : 0));
+        } else {
+            goalStats[log.goalId].value += log.minutes;
+        }
+    });
+
+    if(this.charts.dayChart) this.charts.dayChart.destroy();
+    
+    const dataValues = Object.values(goalStats).map(s => s.value);
+
+    this.charts.dayChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: { 
+            labels: Object.values(goalStats).map(s => s.name), 
+            datasets: [{ 
+                data: dataValues, 
+                backgroundColor: Object.values(goalStats).map(s => s.color), 
+                borderWidth: 1, 
+                borderColor: '#1f2937' 
+            }] 
+        },
+        options: { 
+            maintainAspectRatio: false, 
+            plugins: { 
+                legend: { position: 'right', labels: { color: '#9ca3af', font: {size: 11} } },
+                title: { 
+                    display: dataValues.length === 0, 
+                    text: isMindfulness ? 'No mindfulness data' : 'No data', 
+                    position: 'bottom', 
+                    color: '#6b7280' 
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return ` ${context.label}: ${context.raw} ${unitLabel}`;
+                        }
+                    }
+                }
+            } 
+        }
+    });
+}
             closeDayModal() { document.getElementById('day-details-modal').style.display = 'none'; }
+setReportMode(mode) {
+    this.reportMode = mode;
+    
+    // Cập nhật giao diện nút bấm
+    const btnTime = document.getElementById('btn-rep-time');
+    const btnMind = document.getElementById('btn-rep-mind');
+    
+    if (mode === 'time') {
+        btnTime.className = 'btn'; // Active styling
+        btnMind.className = 'btn btn-secondary';
+    } else {
+        btnTime.className = 'btn btn-secondary';
+        btnMind.className = 'btn'; // Active styling (sẽ lấy màu primary)
+    }
 
+    this.renderReports();
+}
             // --- REPORTING LOGIC ---
-            renderReports() {
-                if(!document.getElementById('weeklyChart')) return;
-                
-                // Weekly
-                const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-                const weekStart = new Date(this.currentWeekStart);
-                const weekEnd = new Date(this.currentWeekStart); weekEnd.setDate(weekEnd.getDate() + 6);
-                document.getElementById('weekly-report-title').innerText = `Weekly (${weekStart.toLocaleDateString('en-US', {month:'numeric', day:'numeric'})} - ${weekEnd.toLocaleDateString('en-US', {month:'numeric', day:'numeric'})})`;
-                
-                // Monthly
-                const mYear = this.currentMonth.getFullYear();
-                const mMonth = this.currentMonth.getMonth();
-                const monthlyLabels = Array.from({length: new Date(mYear, mMonth + 1, 0).getDate()}, (_, i) => i + 1);
-                document.getElementById('monthly-report-title').innerText = `Monthly (${new Date(mYear, mMonth).toLocaleDateString('default', { month: 'long' })})`;
+renderReports() {
+    if(!document.getElementById('weeklyChart')) return;
+    
+    const isMindfulness = this.reportMode === 'mindfulness';
+    const unitLabel = isMindfulness ? 'Mindfulness' : 'Minutes';
+    
+    // Cập nhật tiêu đề biểu đồ tròn
+    document.getElementById('breakdown-title').innerText = isMindfulness ? 'Mindfulness Chart' : 'Time Chart';
 
-                const goalDatasets = {};
-                this.data.goals.forEach(goal => { 
-                    goalDatasets[goal.id] = { 
-                        name: goal.name, 
-                        color: goal.color, 
-                        total: 0, 
-                        weekly: new Array(7).fill(0),
-                        monthly: new Array(monthlyLabels.length).fill(0) 
-                    }; 
-                });
-                
-                this.data.logs.forEach(log => {
-                    if(!goalDatasets[log.goalId]) return;
-                    goalDatasets[log.goalId].total += log.minutes;
-                    const logDate = new Date(log.date);
-                    const logTime = logDate.getTime();
-                    
-                  // Weekly Binning (Map JS day 0-6 to Array 0-6 where Mon is 0)
-                    if(logTime >= weekStart.getTime() && logTime <= weekEnd.getTime()) { 
-                        // JS: Sun=0, Mon=1...
-                        // Map: Mon(1)->0, Sun(0)->6
-                        let dayIdx = logDate.getDay();
-                        dayIdx = (dayIdx === 0 ? 6 : dayIdx - 1);
-                        goalDatasets[log.goalId].weekly[dayIdx] += log.minutes; 
+    // Xử lý tiêu đề Tuần
+    const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    const weekStart = new Date(this.currentWeekStart);
+    const weekEnd = new Date(this.currentWeekStart); weekEnd.setDate(weekEnd.getDate() + 6);
+    document.getElementById('weekly-report-title').innerText = `Week (${weekStart.toLocaleDateString('en-GB', {month:'numeric', day:'numeric'})} - ${weekEnd.toLocaleDateString('en-GB', {month:'numeric', day:'numeric'})})`;
+    
+    // Xử lý tiêu đề Tháng
+    const mYear = this.currentMonth.getFullYear();
+    const mMonth = this.currentMonth.getMonth();
+    const monthlyLabels = Array.from({length: new Date(mYear, mMonth + 1, 0).getDate()}, (_, i) => i + 1);
+    document.getElementById('monthly-report-title').innerText = `Month ${new Date(mYear, mMonth).toLocaleDateString('en-GB', { month: 'numeric', year: 'numeric' })}`;
+
+    const goalDatasets = {};
+    
+    // LỌC MỤC TIÊU: Nếu xem Chánh niệm, chỉ lấy mục tiêu type='meditation'
+    this.data.goals.forEach(goal => { 
+        if (isMindfulness && goal.type !== 'meditation') return;
+
+        goalDatasets[goal.id] = { 
+            name: goal.name, 
+            color: goal.color, 
+            total: 0, 
+            weekly: new Array(7).fill(0),
+            monthly: new Array(monthlyLabels.length).fill(0) 
+        }; 
+    });
+    
+    // TÍNH TOÁN DỮ LIỆU
+    this.data.logs.forEach(log => {
+        if(!goalDatasets[log.goalId]) return;
+
+        // LẤY GIÁ TRỊ DỰA TRÊN CHẾ ĐỘ
+        let value = 0;
+        if (isMindfulness) {
+            // Lấy count, nếu không có thì lấy độ dài mảng touches
+            value = log.count !== undefined ? log.count : (log.touches ? log.touches.length : 0);
+        } else {
+            value = log.minutes;
+        }
+
+        goalDatasets[log.goalId].total += value;
+        
+        const logDate = new Date(log.date);
+        const logTime = logDate.getTime();
+        
+        // Tính cho Tuần
+        if(logTime >= weekStart.getTime() && logTime <= weekEnd.getTime()) { 
+            let dayIdx = logDate.getDay();
+            dayIdx = (dayIdx === 0 ? 6 : dayIdx - 1);
+            goalDatasets[log.goalId].weekly[dayIdx] += value; 
+        }
+        
+        // Tính cho Tháng
+        if(logDate.getFullYear() === mYear && logDate.getMonth() === mMonth) {
+            goalDatasets[log.goalId].monthly[logDate.getDate() - 1] += value;
+        }
+    });
+    
+    const activeGoals = Object.values(goalDatasets).filter(d => d.total > 0);
+    
+    // CẤU HÌNH CHART
+    const commonOptions = { 
+        maintainAspectRatio: false, 
+        scales: { 
+            x: {stacked: true, grid:{color:'#374151'}}, 
+            y: {
+                stacked: true, 
+                grid:{color:'#374151'},
+                title: { display: true, text: unitLabel } // Hiện tên trục Y
+            } 
+        }, 
+        plugins: {
+            legend:{labels:{color:'#9ca3af'}},
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        return context.dataset.label + ': ' + context.raw + ' ' + unitLabel;
                     }
-                    
-                    // Monthly Binning
-                    if(logDate.getFullYear() === mYear && logDate.getMonth() === mMonth) {
-                        goalDatasets[log.goalId].monthly[logDate.getDate() - 1] += log.minutes;
-                    }
-                });
-                
-                const activeGoals = Object.values(goalDatasets).filter(d => d.total > 0);
-                
-                // Charts
-                const commonOptions = { maintainAspectRatio: false, scales: { x: {stacked: true, grid:{color:'#374151'}}, y: {stacked: true, grid:{color:'#374151'}} }, plugins: {legend:{labels:{color:'#9ca3af'}}} };
-                
-                // Breakdown
-                const ctxBreakdown = document.getElementById('goalBreakdownChart').getContext('2d');
-                if(this.charts.breakdown) this.charts.breakdown.destroy();
-                this.charts.breakdown = new Chart(ctxBreakdown, { type: 'doughnut', data: { labels: activeGoals.map(d=>d.name), datasets: [{ data: activeGoals.map(d=>d.total), backgroundColor: activeGoals.map(d=>d.color), borderWidth: 1, borderColor: '#1f2937' }] }, options: { maintainAspectRatio: false, plugins: { legend: { labels: { color: '#9ca3af' } } } } });
-                
-                // Weekly
-                const ctxWeek = document.getElementById('weeklyChart').getContext('2d');
-                if(this.charts.weekly) this.charts.weekly.destroy();
-                this.charts.weekly = new Chart(ctxWeek, { type: 'bar', data: { labels: weekDays, datasets: activeGoals.map(g => ({ label: g.name, data: g.weekly, backgroundColor: g.color, stack: '0' })) }, options: commonOptions });
-                
-                // Monthly (Restored)
-                const ctxMonth = document.getElementById('monthlyChart').getContext('2d');
-                if(this.charts.monthly) this.charts.monthly.destroy();
-                this.charts.monthly = new Chart(ctxMonth, { type: 'bar', data: { labels: monthlyLabels, datasets: activeGoals.map(g => ({ label: g.name, data: g.monthly, backgroundColor: g.color, stack: '0' })) }, options: commonOptions });
+                }
             }
+        } 
+    };
+    
+    // 1. Breakdown Chart (Tròn)
+const ctxBreakdown = document.getElementById('goalBreakdownChart').getContext('2d');
+if(this.charts.breakdown) this.charts.breakdown.destroy();
+
+this.charts.breakdown = new Chart(ctxBreakdown, { 
+    type: 'doughnut', 
+    data: { 
+        labels: activeGoals.map(d => d.name), 
+        datasets: [{ 
+            data: activeGoals.map(d => d.total), 
+            backgroundColor: activeGoals.map(d => d.color), 
+            borderWidth: 1, 
+            borderColor: '#1f2937' 
+        }] 
+    }, 
+    options: { 
+        maintainAspectRatio: false, 
+        plugins: { 
+            legend: { labels: { color: '#9ca3af' } },
+            title: { 
+                display: activeGoals.length === 0, 
+                text: 'Chưa có dữ liệu', 
+                position: 'bottom', 
+                color: '#6b7280' 
+            },
+            // --- PHẦN THÊM VÀO ĐỂ HIỂN THỊ ĐƠN VỊ ---
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        const label = context.label || '';
+                        const value = context.raw || 0;
+                        return ` ${label}: ${value} ${unitLabel}`;
+                    }
+                }
+            }
+            // ---------------------------------------
+        } 
+    } 
+});
+    
+    // 2. Weekly Chart
+    const ctxWeek = document.getElementById('weeklyChart').getContext('2d');
+    if(this.charts.weekly) this.charts.weekly.destroy();
+    this.charts.weekly = new Chart(ctxWeek, { type: 'bar', data: { labels: weekDays, datasets: activeGoals.map(g => ({ label: g.name, data: g.weekly, backgroundColor: g.color, stack: '0' })) }, options: commonOptions });
+    
+    // 3. Monthly Chart
+    const ctxMonth = document.getElementById('monthlyChart').getContext('2d');
+    if(this.charts.monthly) this.charts.monthly.destroy();
+    this.charts.monthly = new Chart(ctxMonth, { type: 'bar', data: { labels: monthlyLabels, datasets: activeGoals.map(g => ({ label: g.name, data: g.monthly, backgroundColor: g.color, stack: '0' })) }, options: commonOptions });
+}
 
             changeReportWeek(dir) { this.currentWeekStart.setDate(this.currentWeekStart.getDate() + (dir * 7)); this.renderReports(); }
             changeReportMonth(dir) { this.currentMonth.setMonth(this.currentMonth.getMonth() + dir); this.renderReports(); }
@@ -1437,11 +1832,11 @@ updateStats() {
     { id: 'streak_10', title: 'Striving', desc: 'Practice for 10 consecutive days', condition: () => this.data.streak >= 10 },
     { id: 'streak_30', title: 'Diligence', desc: 'Practice for 30 consecutive days', condition: () => this.data.streak >= 30 },
     { id: 'streak_60', title: 'Ardor', desc: 'Practice for 60 consecutive days', condition: () => this.data.streak >= 60 },
-    { id: 'streak_120', title: 'Perseverance', desc: 'Practice for 120 consecutive days', condition: () => this.data.streak >= 120 },
-    { id: 'streak_365', title: 'Viriya', desc: 'Practice for 365 consecutive days', condition: () => this.data.streak >= 365 },
+    { id: 'streak_120', title: 'Viriya', desc: 'Practice for 120 consecutive days', condition: () => this.data.streak >= 120 },
+    { id: 'streak_365', title: 'Viriya-sambojjhanga', desc: 'Practice for 365 consecutive days', condition: () => this.data.streak >= 365 },
 
     { id: 'beginner', title: 'Novice', desc: 'Accumulate 5,000 Mindfulness (Sati)', condition: () => this.totalMindfulnessCounts >= 5000 },
-    { id: 'level2', title: 'Practitioner', desc: 'Accumulate 20,000 Mindfulness (Sati)', condition: () => this.totalMindfulnessCounts >= 20000 },
+    { id: 'level2', title: 'Practitioner', desc: 'Accumulate 10,000 Mindfulness (Sati)', condition: () => this.totalMindfulnessCounts >= 10000 },
     { id: 'practitioner', title: 'Yogi', desc: 'Accumulate 20,000 Mindfulness (Sati)', condition: () => this.totalMindfulnessCounts >= 20000 },
     { id: 'meditator', title: 'Meditator', desc: 'Accumulate 80,000 Mindfulness (Sati)', condition: () => this.totalMindfulnessCounts >= 80000 },
     { id: 'master', title: 'Meditation Master', desc: 'Accumulate 500,000 Mindfulness (Sati)', condition: () => this.totalMindfulnessCounts >= 500000 }
@@ -1582,7 +1977,9 @@ updateStats() {
             this.showToast('Copied!');
         }
     }
-
+clearBackupArea() {
+        document.getElementById('backup-data-area').value = '';
+    }
     // "Restore from text" button
     restoreFromText() {
         const textarea = document.getElementById('backup-data-area');
@@ -1744,7 +2141,7 @@ updateStats() {
                 }
             }
             renderDate() {
-                 document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                 document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
             }
         }
 
