@@ -12,7 +12,7 @@
 * **Chánh Niệm:** Đơn vị đo lường sự tỉnh giác. Mỗi lần bạn nhận biết được hơi thở hoặc trạng thái tâm trí và chạm vào màn hình, một "Chánh Niệm" sẽ được ghi lại.
 * **Chánh niệm tốt:** Trạng thái khi tần suất ghi nhận (Niệm) duy trì ở mức ổn định và đều đặn.
 * **Thất niệm:** Trạng thái khi tâm trí bị xao nhãng hoặc buồn ngủ, dẫn đến việc không có hoặc có rất ít ghi nhận trong một khoảng thời gian.
-* **Chuỗi Tinh Tấn ():** Số ngày liên tiếp bạn thực hiện tu tập.
+* **Chuỗi Tinh Tấn:** Số ngày liên tiếp bạn thực hiện tu tập.
 
 
 
