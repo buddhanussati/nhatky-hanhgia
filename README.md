@@ -40,7 +40,7 @@
 ### 3. Báo Cáo & Phân Tích Số Liệu
 
 * **Bảng nhật ký:** Xem tiến độ ngày hôm nay so với mục tiêu đề ra.
-* **Lịch tu tập:** Biểu đồ dạng lưới hiển thị mức độ tu tập theo ngày. Màu càng đậm thể hiện thời gian tu tập càng nhiều.
+* **Lịch tu tập:** Biểu đồ dạng lưới hiển thị mức độ tu tập theo ngày. Màu càng nhiều thể hiện thời gian tu tập càng nhiều.
 * **Biểu đồ trực quan:**
 * **Biểu đồ phiên:** Xem lại mức độ chánh *trong từng thời thiền* (biểu đồ đường).
 * **Báo cáo Tuần/Tháng:** So sánh hiệu suất theo thời gian thực.
