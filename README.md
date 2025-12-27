@@ -30,7 +30,6 @@
 ### 2. Đồng Hồ & Ghi Nhận Tương Tác
 
 * **Chế độ Thiền:**
-* Hiệu ứng hình ảnh "hơi thở" (phồng/xẹp) giúp điều hòa nhịp thở.
 * **Chạm để đếm:** Chạm vào màn hình (hoặc click chuột) mỗi khi bạn ghi nhận được sự chú tâm quay về hơi thở. Số đếm này được tích lũy thành điểm Chánh niệm (Sati).
 <img width="445" height="457" alt="image" src="https://github.com/user-attachments/assets/1f578774-1c46-4ede-b80b-5c35fa25a12d" />
 
@@ -100,8 +99,11 @@
 | **Sơ Cơ** | 5,000 |
 | **Thiền Sinh** | 10,000 |
 | **Hành Giả** | 20,000 |
-| **Thiền Giả** | 80,000 |
-| **Thiền Sư** | 500,000 |
+| **Thiền Giả** | 50,000 |
+| **Gương Sáng** | 80,000 |
+| **Mặt Hồ Tĩnh Lặng** | 100,000 |
+| **Núi Đá** | 200,000 |
+| **Thừa Tự Pháp** | 500,000 |
 
 ---
 
