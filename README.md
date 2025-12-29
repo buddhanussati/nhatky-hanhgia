@@ -46,9 +46,24 @@
 * **Báo cáo Tuần/Tháng:** So sánh hiệu suất theo thời gian thực.
 * **Phân bổ:** Biểu đồ tròn xem tỷ lệ thời gian dành cho các mục tiêu khác nhau.
 
+### 4. Phân Tích Thiền Tập (Mới)
+
+Tab **"Phân tích"** giúp bạn soi chiếu lại chất lượng tâm trong các thời thiền với độ chính xác cao hơn.
+
+* **Phân tích theo từng mục tiêu:** Bạn có thể chọn xem số liệu của riêng "Thiền Tọa" hay "Thiền Hành" để so sánh sự tiến bộ của từng pháp tu.
+* **Ngưỡng mất tập trung:**
+Đây là khái niệm quan trọng nhất để tính toán "Chất lượng thiền".
+> *"Ngưỡng mất tập trung" là khoảng cách tối đa cho phép giữa hai lần ghi nhận; nếu vượt quá thời gian này, hệ thống sẽ xem là bạn đang mất tập trung.*
 
 
-### 4. Riêng Tư & An Toàn Dữ Liệu
+* **Cơ chế hoạt động:** Ví dụ bạn đặt ngưỡng là **12 giây**.
+* Nếu bạn chạm màn hình sau **5 giây**: Toàn bộ thời gian đó là Tỉnh thức.
+* Nếu bạn chạm sau **20 giây**: Hệ thống hiểu rằng bạn đã lơ là hoặc hôn trầm mất **8 giây** (20 - 12 = 8).
+
+
+* **Tùy chỉnh riêng biệt:** Mỗi loại thiền cần một nhịp độ khác nhau. Bạn có thể cài đặt ngưỡng thấp (ví dụ 5s) cho các bài tập ghi nhận nhanh, hoặc ngưỡng cao (30s) cho các bài tập định tâm sâu. Hệ thống sẽ tự động nhớ cài đặt này cho từng mục tiêu.
+
+### 5. Riêng Tư & An Toàn Dữ Liệu
 
 * **Offline Hoàn Toàn:** 100% dữ liệu được lưu trữ trực tiếp trên trình duyệt của bạn. Không có dữ liệu nào được gửi về máy chủ.
 * **Sao lưu & Khôi phục:** Dễ dàng xuất dữ liệu ra file `.json` để cất giữ hoặc chuyển sang thiết bị khác.
