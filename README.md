@@ -50,7 +50,7 @@
 
 Tab **"Phân tích"** giúp bạn soi chiếu lại chất lượng tâm trong các thời thiền với độ chính xác cao hơn.
 
-* **Phân tích theo từng mục tiêu:** Bạn có thể chọn xem số liệu của riêng "Thiền Tọa" hay "Thiền Hành" để so sánh sự tiến bộ của từng pháp tu.
+* **Phân tích theo từng mục tiêu:** Bạn có thể chọn xem số liệu của riêng "Thiền Tọa" hay "Thiền Hành" để so sánh sự tiến bộ của từng phương pháp tu tập.
 * **Ngưỡng mất tập trung:**
 Đây là khái niệm quan trọng nhất để tính toán "Chất lượng thiền".
 > *"Ngưỡng mất tập trung" là khoảng cách tối đa cho phép giữa hai lần ghi nhận; nếu vượt quá thời gian này, hệ thống sẽ xem là bạn đang mất tập trung.*
