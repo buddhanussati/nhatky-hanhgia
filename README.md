@@ -27,13 +27,22 @@
 
 * **Tùy biến:** Tự đặt mục tiêu hàng ngày (số phút), thời gian cần dành để hoàn thành mục tiêu, màu sắc đại diện và danh mục quản lý.
 
-### 2. Đồng Hồ & Ghi Nhận Tương Tác
+### 2. Cấu hình Tương Tác & Chế Độ Pro (Mới)
 
-* **Chế độ Thiền:**
-* **Chạm để đếm:** Chạm vào màn hình (hoặc click chuột) mỗi khi bạn ghi nhận được sự chú tâm quay về hơi thở. Số đếm này được tích lũy thành điểm Chánh niệm (Sati).
+Trong giao diện thiền, nhấn nút ⚙️ để mở cài đặt tương tác. Hệ thống hỗ trợ rung phản hồi xung giác & 4 chế độ ghi nhận:
+
+* **Chạm:** Chế độ cơ bản. Chạm nhẹ màn hình để đếm. Có thể cài đặt chạm 1, 2, 3 hoặc 4 lần mới tính là 1 niệm (giúp lọc bớt tà niệm).
+* **Giữ:** Ấn và giữ màn hình trong một khoảng thời gian (mặc định 0.4s) để ghi nhận chánh niệm.
+* **✨ Auto:** Tự động nhận diện cả thao tác Chạm và Giữ.
+* **💎 Chế độ Pro (Chuyên sâu):** Đánh giá mức độ chú tâm ngay lúc ghi nhận. Hệ thống sẽ lưu lại "điểm chú tâm" dựa trên thao tác tay của bạn:
+>* ● Ấn giữ: **Cao**
+>* ● 3 Chạm: **Tốt**
+>* ● 2 Chạm: **Trung bình**
+>* ● 1 Chạm: **Thấp**
+* **Lưu ý:** *Hỗ trợ rung phản hồi xúc giác khác nhau cho từng mức độ yêu cầu thiết bị hỗ trợ.*
+
 <img width="445" height="457" alt="image" src="https://github.com/user-attachments/assets/1f578774-1c46-4ede-b80b-5c35fa25a12d" />
 
-* **Chế độ Tập trung:** Đồng hồ đếm ngược với thanh tiến trình trực quan.
 * **Nhập liệu thủ công:** Quên bấm giờ? Bạn có thể tự nhập lại phiên thiền hoặc sửa đổi các ghi chép cũ.
 
 
@@ -44,9 +53,9 @@
 * **Biểu đồ trực quan:**
 * **Biểu đồ phiên:** Xem lại mức độ chánh *trong từng thời thiền* (biểu đồ đường).
 * **Báo cáo Tuần/Tháng:** So sánh hiệu suất theo thời gian thực.
-* **Phân bổ:** Biểu đồ tròn xem tỷ lệ thời gian dành cho các mục tiêu khác nhau.
+* **💎 Biểu đồ Chuyên sâu:** Tab "Chuyên sâu" hiển thị biểu đồ phân bố mức độ chú tâm (Cao/Thấp) qua các tuần.
 
-### 4. Phân Tích Thiền Tập (Mới)
+### 4. Phân Tích Thiền Tập
 
 Tab **"Phân tích"** giúp bạn soi chiếu lại chất lượng tâm trong các thời thiền với độ chính xác cao hơn.
 
@@ -124,7 +133,7 @@ Tab **"Phân tích"** giúp bạn soi chiếu lại chất lượng tâm trong c
 
 ## ⚠️ Lưu Ý Quan Trọng Về Dữ Liệu
 
-Dữ liệu của bạn được lưu trong bộ nhớ **Local Storage** của trình duyệt.
+Dữ liệu của bạn được lưu trong **IndexedDB** của trình duyệt (An toàn & dung lượng lớn)
 
 1. **Không xóa lịch sử/cache trình duyệt** nếu chưa sao lưu, dữ liệu sẽ bị mất.
 2. **Cách Sao Lưu:** Vào thanh menu bên trái, chọn **"Sao lưu"** để tải file về máy tính/điện thoại.
@@ -135,7 +144,7 @@ Dữ liệu của bạn được lưu trong bộ nhớ **Local Storage** của t
 ## 💡 Công Nghệ Sử Dụng
 
 * **Core:** HTML5, CSS3, JavaScript (ES6+).
-* **Lưu trữ:** LocalStorage API.
+* **Lưu trữ:** IndexedDB API.
 * **Thư viện bên thứ 3 (qua CDN):**
 * [Chart.js](https://www.chartjs.org/) - Vẽ biểu đồ.
 * [FontAwesome](https://fontawesome.com/) - Bộ icon giao diện.
