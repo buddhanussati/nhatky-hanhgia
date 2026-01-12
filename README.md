@@ -39,7 +39,7 @@ Trong giao diện thiền, nhấn nút ⚙️ để mở cài đặt tương tá
 >* ● 3 Chạm: **Tốt**
 >* ● 2 Chạm: **Trung bình**
 >* ● 1 Chạm: **Thấp**
-* **Lưu ý:** *Hỗ trợ rung phản hồi xúc giác khác nhau cho từng mức độ yêu cầu thiết bị hỗ trợ.*
+* **Lưu ý:** *Phản hồi xúc giác yêu cầu thiết bị có hỗ trợ chế độ rung.*
 
 <img width="445" height="457" alt="image" src="https://github.com/user-attachments/assets/1f578774-1c46-4ede-b80b-5c35fa25a12d" />
 
