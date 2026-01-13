@@ -1,21 +1,26 @@
-const CACHE_NAME = 'hanhgia-app-v1';
+const CACHE_NAME = 'hanhgia-app-v4';
 // Danh sách các file cần lưu để chạy offline
 const ASSETS = [
   './',
-  './index.html',
+  './nhatky-hanhgia.html',
   './css/css.css',
-  './css/css2.css',
   './js/chart.js',
   './js/nh.js',
-  './images/icon-192.png', 
+  './images/1vi.png',
+  './images/2vi.png',
+  './webfonts/fa-brands-400.woff2',
+  './webfonts/fa-regular-400.woff2',
+  './webfonts/fa-solid-900.woff2',
+  './webfonts/fa-v4compatibility.woff2',
+  './images/icon-192.png',   
   './images/icon-512.png'
 ];
 
 // 1. Cài đặt Service Worker và lưu cache
 self.addEventListener('install', (event) => {
+  self.skipWaiting(); // Ép service worker mới kích hoạt ngay
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('Đang lưu cache...');
       return cache.addAll(ASSETS);
     })
   );
@@ -39,5 +44,4 @@ self.addEventListener('fetch', (event) => {
       return response || fetch(event.request);
     })
   );
-
 });
