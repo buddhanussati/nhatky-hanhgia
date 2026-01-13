@@ -35,12 +35,12 @@ Trong giao diện thiền, nhấn nút ⚙️ để mở cài đặt tương tá
 * **Giữ:** Ấn và giữ màn hình trong một khoảng thời gian (mặc định 0.4s) để ghi nhận chánh niệm.
 * **✨ Auto:** Tự động nhận diện cả thao tác Chạm và Giữ.
 * **💎 Chế độ Pro (Chuyên sâu):** Đánh giá mức độ chú tâm ngay lúc ghi nhận. Hệ thống sẽ lưu lại "điểm chú tâm" dựa trên thao tác tay của bạn:
->* ● Ấn giữ: **Cao**
->* ● 3 Chạm: **Tốt**
->* ● 2 Chạm: **Trung bình**
 >* ● 1 Chạm: **Thấp**
+>* ● 2 Chạm: **Trung bình**
+>* ● Ấn giữ: **Tốt**
+>* ● 10+ Tốt*: **Cao**
+* **10+ Tốt:** *Mức chú tâm Tốt từ 10 lần liên tục trở lên, mỗi lần liên tục tiếp theo sẽ được tính là mức Cao.*
 * **Lưu ý:** *Phản hồi xúc giác yêu cầu thiết bị có hỗ trợ chế độ rung.*
-
 <img width="445" height="457" alt="image" src="https://github.com/user-attachments/assets/1f578774-1c46-4ede-b80b-5c35fa25a12d" />
 
 * **Nhập liệu thủ công:** Quên bấm giờ? Bạn có thể tự nhập lại phiên thiền hoặc sửa đổi các ghi chép cũ.
