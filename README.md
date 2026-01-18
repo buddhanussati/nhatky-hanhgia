@@ -27,14 +27,19 @@
 
 * **Tùy biến:** Tự đặt mục tiêu hàng ngày (số phút), thời gian cần dành để hoàn thành mục tiêu, màu sắc đại diện và danh mục quản lý.
 
-### 2. Cấu hình Tương Tác & Chế Độ Pro (Mới)
+### 2. Cấu hình Tương Tác
 
-Trong giao diện thiền, nhấn nút ⚙️ để mở cài đặt tương tác. Hệ thống hỗ trợ rung phản hồi xung giác & 4 chế độ ghi nhận:
+Trong giao diện thiền, nhấn nút ⚙️ để mở cài đặt tương tác. Ứng dụng hỗ trợ rung phản hồi xúc giác & 4 chế độ ghi nhận cùng 4 thang điểm cho mức độ chú tâm.
 
-* **Chạm:** Chế độ cơ bản. Chạm nhẹ màn hình để đếm. Có thể cài đặt chạm 1, 2, 3 hoặc 4 lần mới tính là 1 niệm (giúp lọc bớt tà niệm).
-* **Giữ:** Ấn và giữ màn hình trong một khoảng thời gian (mặc định 0.4s) để ghi nhận chánh niệm.
-* **✨ Auto:** Tự động nhận diện cả thao tác Chạm và Giữ.
-* **💎 Chế độ Pro (Chuyên sâu):** Đánh giá mức độ chú tâm ngay lúc ghi nhận. Hệ thống sẽ lưu lại "điểm chú tâm" dựa trên thao tác tay của bạn:
+> **Các chế độ ghi nhận:**
+> * **Chạm:** Chế độ cơ bản. Chạm nhẹ màn hình để đếm. Có thể cài đặt chạm 1, 2, 3 hoặc 4 lần mới tính là 1 niệm.
+> * **Giữ:** Ấn và giữ màn hình trong một khoảng thời gian (mặc định 0.4s) để ghi nhận chánh niệm.
+> * **✨ Auto:** Tự động nhận diện cả thao tác Chạm và Giữ.
+> * **Cơ chế Chuỗi (Combo):** Mọi chế độ đều bắt đầu ở mức chú tâm **Thấp**. Cứ mỗi 10 lần (hoặc 20 lần ở mức Trung Bình) ghi nhận liên tục với khoảng cách thời gian ≤ *Ngưỡng mất tập trung*, mức chú tâm sẽ được nâng lên một bậc (Thấp → TB → Tốt → Cao). Nếu để quá ngưỡng thời gian, chuỗi sẽ reset về mức Thấp.
+> 
+> 
+* **💎 (Thủ công):**
+Cho phép bạn **chủ động phân loại** mức độ chú tâm dựa trên thao tác tay của bạn:
 >* ● 1 Chạm: **Thấp**
 >* ● 2 Chạm: **Trung bình**
 >* ● Ấn giữ: **Tốt**
@@ -102,32 +107,41 @@ Tab **"Phân tích"** giúp bạn soi chiếu lại chất lượng tâm trong c
 
 ---
 
-## ✨ Hệ Thống Ghi Nhận Mức Độ Tu Tập
+## ✨ Hệ Thống Pāramī (Thành Tựu)
 
-Ứng dụng ghi nhận sự tinh tấn của bạn qua các mốc sau:
+Hệ thống danh hiệu đã được nhóm thành các Pāramī (Phẩm chất) để khích lệ sự tinh tấn. Dưới đây là một số cột mốc tiêu biểu:
 
-### Mốc Liên Tục
+**🔥 Chuỗi Tinh Tấn (Liên tục):**
 
 | Danh hiệu | Điều kiện | Ý nghĩa |
 | --- | --- | --- |
-| **Cố Gắng** | 3 ngày liên tục | Bước đầu vượt qua sức ỳ. |
-| **Nỗ Lực** | 10 ngày liên tục | Bắt đầu hình thành thói quen. |
-| **Tinh Cần** | 30 ngày liên tục | Thói quen đã dần ổn định. |
-| **Nhiệt Tâm** | 60 ngày liên tục | Sự tu tập trở nên vững chãi. |
-| **Tinh Tấn Giác Chi** | 365 ngày liên tục | Sự kiên trì phi thường trong một năm. |
+| Kinh Hành | 3 ngày | Bước đi đầu tiên của hành giả. |
+| Phước Báu | 7 ngày | Tích lũy thiện pháp trong một tuần. |
+| Như Ý Túc | 30 ngày | Thói quen tu tập đã vững vàng. |
+| Tứ Niệm Xứ | 49 ngày | Bảy tuần tu tập miên mật. |
+| Đại Hùng | 90 ngày | Sức mạnh tinh tấn phi thường. |
+| Vô Thủy | 365 ngày | Sự kiên trì không giới hạn. |
 
-### Mốc Chánh Niệm
+**🌱 Tích Lũy Chánh Niệm (Tổng số lần ghi nhận):**
 
-| Cấp độ | Điểm Chánh Niệm (Sati) |
+| Danh hiệu | Số Chánh Niệm |
 | --- | --- |
-| **Sơ Cơ** | 5,000 |
-| **Thiền Sinh** | 10,000 |
-| **Hành Giả** | 20,000 |
-| **Thiền Giả** | 50,000 |
-| **Gương Sáng** | 80,000 |
-| **Mặt Hồ Tĩnh Lặng** | 100,000 |
-| **Núi Đá** | 200,000 |
-| **Thừa Tự Pháp** | 500,000 |
+| Nhất Tâm | 100 |
+| Thanh Tịnh | 500 |
+| Biết Đủ | 1,000 |
+| Cúng Dường | 10,000 |
+| An Lạc | 50,000 |
+| Chân Như | 100,000 |
+
+**⏳ Tích Lũy Thời Gian (Tổng giờ tu tập):**
+
+| Danh hiệu | Thời lượng |
+| --- | --- |
+| Sát Na | 1 giờ |
+| Chánh Niệm | 10 giờ |
+| Nhập Dòng | 50 giờ |
+| Nhiệt Thành | 100 giờ |
+| Hư Không | 1,000 giờ |
 
 ---
 
