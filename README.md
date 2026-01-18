@@ -31,14 +31,14 @@
 
 Trong giao diện thiền, nhấn nút ⚙️ để mở cài đặt tương tác. Ứng dụng hỗ trợ rung phản hồi xúc giác & 4 chế độ ghi nhận cùng 4 thang điểm cho mức độ chú tâm.
 
-> **Các chế độ ghi nhận:**
-> * **Chạm:** Chế độ cơ bản. Chạm nhẹ màn hình để đếm. Có thể cài đặt chạm 1, 2, 3 hoặc 4 lần mới tính là 1 niệm.
-> * **Giữ:** Ấn và giữ màn hình trong một khoảng thời gian (mặc định 0.4s) để ghi nhận chánh niệm.
-> * **✨ Auto:** Tự động nhận diện cả thao tác Chạm và Giữ.
-> * **Cơ chế Chuỗi (Combo):** Mọi chế độ đều bắt đầu ở mức chú tâm **Thấp**. Cứ mỗi 10 lần (hoặc 20 lần ở mức Trung Bình) ghi nhận liên tục với khoảng cách thời gian ≤ *Ngưỡng mất tập trung*, mức chú tâm sẽ được nâng lên một bậc (Thấp → TB → Tốt → Cao). Nếu để quá ngưỡng thời gian, chuỗi sẽ reset về mức Thấp.
-> 
-> 
-* **💎 (Thủ công):**
+ **Các chế độ ghi nhận:**
+ * **Chạm:** Chế độ cơ bản. Chạm nhẹ màn hình để đếm. Có thể cài đặt chạm 1, 2, 3 hoặc 4 lần mới tính là 1 niệm.
+ * **Giữ:** Ấn và giữ màn hình trong một khoảng thời gian (mặc định 0.4s) để ghi nhận chánh niệm.
+ * **✨ Auto:** Tự động nhận diện cả thao tác Chạm và Giữ.
+ * **Cơ chế Chuỗi (Combo):** Mọi chế độ đều bắt đầu ở mức chú tâm **Thấp**. Cứ mỗi 10 lần (hoặc 20 lần ở mức Trung Bình) ghi nhận liên tục với khoảng cách thời gian ≤ *Ngưỡng mất tập trung*, mức chú tâm sẽ được nâng lên một bậc (Thấp → TB → Tốt → Cao). Nếu để quá ngưỡng thời gian, chuỗi sẽ reset về mức Thấp.
+ 
+ 
+* **💎 Pro (Thủ công):**
 Cho phép bạn **chủ động phân loại** mức độ chú tâm dựa trên thao tác tay của bạn:
 >* ● 1 Chạm: **Thấp**
 >* ● 2 Chạm: **Trung bình**
