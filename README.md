@@ -29,22 +29,22 @@
 
 ### 2. Cấu hình Tương Tác
 
-Trong giao diện thiền, nhấn nút ⚙️ để mở cài đặt tương tác. Ứng dụng hỗ trợ rung phản hồi xúc giác & 4 chế độ ghi nhận cùng 4 thang điểm cho mức độ chú tâm.
+Trong giao diện thiền, nhấn nút **Cài đặt** (biểu tượng bánh răng) để mở cài đặt tương tác. Ứng dụng hỗ trợ rung phản hồi xúc giác và giúp bạn ghi nhận đồng thời 2 trạng thái tâm cùng 4 thang điểm cho mức độ chú tâm.
 
- **Các chế độ ghi nhận:**
- * **Chạm:** Chế độ cơ bản. Chạm nhẹ màn hình để đếm. Có thể cài đặt chạm 1, 2, 3 hoặc 4 lần mới tính là 1 niệm.
- * **Giữ:** Ấn và giữ màn hình trong một khoảng thời gian (mặc định 0.4s) để ghi nhận chánh niệm.
- * **✨ Auto:** Tự động nhận diện cả thao tác Chạm và Giữ.
- * **Cơ chế Chuỗi (Combo):** Mọi chế độ đều bắt đầu ở mức chú tâm **Thấp**. Cứ mỗi 10 lần (hoặc 20 lần ở mức Trung Bình) ghi nhận liên tục với khoảng cách thời gian ≤ *Ngưỡng mất tập trung*, mức chú tâm sẽ được nâng lên một bậc (Thấp → TB → Tốt → Cao). Nếu để quá ngưỡng thời gian, chuỗi sẽ reset về mức Thấp.
- 
- 
-* **💎 Pro (Thủ công):**
-Cho phép bạn **chủ động phân loại** mức độ chú tâm dựa trên thao tác tay của bạn:
->* ● 1 Chạm: **Thấp**
->* ● 2 Chạm: **Trung bình**
->* ● Ấn giữ: **Tốt**
->* ● 10+ Tốt*: **Cao**
-* **10+ Tốt:** *Mức chú tâm Tốt từ 10 lần liên tục trở lên, mỗi lần liên tục tiếp theo sẽ được tính là mức Cao.*
+* **👆 Chạm = Chánh Niệm (giữ tâm trên đề mục):**
+Chạm nhẹ màn hình để ghi nhận sự chú tâm vào đề mục thiền. *Ví dụ: 1 lần chạm cho 1 hơi thở vào ra tính là 1 chánh niệm.*
+> **Áp dụng Cơ chế Chuỗi (Combo):** Mọi phiên đều bắt đầu ở mức chú tâm **Thấp**. Cứ mỗi 12 hoặc 20 lần ghi nhận liên tục với khoảng cách thời gian  *Ngưỡng mất tập trung*, mức chú tâm sẽ được nâng lên một bậc (**Thấp → TB → Tốt → Cao**). Nếu để quá ngưỡng, chuỗi sẽ reset về mức Thấp.
+
+
+* **👆⏳ Ấn giữ = Tỉnh Giác (nhận biết trạng thái tâm, phát hiện xao nhãng):**
+Ấn và giữ màn hình để ghi nhận Tỉnh Giác. Tỉnh giác là khi bạn **nhận biết** được trạng thái tâm mình (ví dụ: chợt nhận ra mình đang phóng tâm, đang có tạp niệm, hoặc đang mất tập trung trên đề mục thiền). Đây là khoảnh khắc của sự nhận biết và quay trở lại.
+
+#### Chế độ Xác nhận
+
+*Dành cho người dùng hay chạm máy vô thức.* Khi bật chế độ này, lần chạm đầu tiên sẽ không được tính ngay. Bạn cần chạm thêm lần thứ 2 (trong khoảng 1-3 giây) để xác nhận đó là hành động có ý thức.
+
+* Chỉ ghi nhận thời gian của lần chạm **đầu tiên**.
+* Chế độ xác nhận chỉ áp dụng khi mức chú tâm đang ở mức **Thấp**.
 * **Lưu ý:** *Phản hồi xúc giác yêu cầu thiết bị có hỗ trợ chế độ rung.*
 <img width="445" height="457" alt="image" src="https://github.com/user-attachments/assets/1f578774-1c46-4ede-b80b-5c35fa25a12d" />
 
