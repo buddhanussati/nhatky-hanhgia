@@ -109,11 +109,11 @@ Tab **"Phân tích"** giúp bạn soi chiếu lại chất lượng tâm trong c
 
 ## ✨ Hệ Thống Pāramī (Thành Tựu)
 
-Hệ thống danh hiệu đã được nhóm thành các Pāramī (Phẩm chất) để khích lệ sự tinh tấn. Dưới đây là một số cột mốc tiêu biểu:
+Các thành quả trong việc thực hành thiền sẽ được phân loại thành các Pāramī (Ba-la-mật) để khích lệ sự tinh tấn. Dưới đây là một số cột mốc tiêu biểu:
 
 **🔥 Chuỗi Tinh Tấn (Liên tục):**
 
-| Danh hiệu | Điều kiện | Ý nghĩa |
+| Pāramī | Điều kiện | Ý nghĩa |
 | --- | --- | --- |
 | Kinh Hành | 3 ngày | Bước đi đầu tiên của hành giả. |
 | Phước Báu | 7 ngày | Tích lũy thiện pháp trong một tuần. |
@@ -124,7 +124,7 @@ Hệ thống danh hiệu đã được nhóm thành các Pāramī (Phẩm chất
 
 **🌱 Tích Lũy Chánh Niệm (Tổng số lần ghi nhận):**
 
-| Danh hiệu | Số Chánh Niệm |
+| Pāramī | Số Chánh Niệm |
 | --- | --- |
 | Nhất Tâm | 100 |
 | Thanh Tịnh | 500 |
@@ -135,7 +135,7 @@ Hệ thống danh hiệu đã được nhóm thành các Pāramī (Phẩm chất
 
 **⏳ Tích Lũy Thời Gian (Tổng giờ tu tập):**
 
-| Danh hiệu | Thời lượng |
+| Pāramī | Thời lượng |
 | --- | --- |
 | Sát Na | 1 giờ |
 | Chánh Niệm | 10 giờ |
