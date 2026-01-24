@@ -33,7 +33,12 @@ Trong giao diện thiền, nhấn nút **Cài đặt** (biểu tượng bánh r�
 
 * **👆 Chạm = Chánh Niệm (giữ tâm trên đề mục):**
 Chạm nhẹ màn hình để ghi nhận sự chú tâm vào đề mục thiền. *Ví dụ: 1 lần chạm cho 1 hơi thở vào ra tính là 1 chánh niệm.*
-> **Áp dụng Cơ chế Chuỗi (Combo):** Mọi phiên đều bắt đầu ở mức chú tâm **Thấp**. Cứ mỗi 12 hoặc 20 lần ghi nhận liên tục với khoảng cách thời gian  *Ngưỡng chánh niệm*, mức chú tâm sẽ được nâng lên một bậc (**Thấp → TB → Tốt → Cao**). Nếu để quá ngưỡng, chuỗi sẽ reset về mức Thấp.
+> **Cơ chế Chuỗi (Combo):** Mọi phiên đều bắt đầu ở mức chú tâm **Thấp**. Cứ mỗi 15 lần ghi nhận liên tục với khoảng cách thời gian ≤ *Ngưỡng mất tập trung*, mức chú tâm sẽ được nâng lên một bậc (**Thấp → TB → Tốt → Cao**). Nếu để quá ngưỡng, chuỗi sẽ reset về mức Thấp.
+> 
+> **Chế độ Thủ công:** Cho phép bạn **chủ động phân loại** mức độ chú tâm dựa trên thao tác tay của bạn:
+>* ● 1 Chạm: **Thấp**
+>* ● 2 Chạm: **Trung bình**
+>* ● 3 Chạm: **Tốt**
 
 
 * **👆⏳ Ấn giữ = Tỉnh Giác (nhận biết trạng thái tâm, phát hiện xao nhãng):**
@@ -65,9 +70,9 @@ Chạm nhẹ màn hình để ghi nhận sự chú tâm vào đề mục thiền
 Tab **"Phân tích"** giúp bạn soi chiếu lại chất lượng tâm trong các thời thiền với độ chính xác cao hơn.
 
 * **Phân tích theo từng mục tiêu:** Bạn có thể chọn xem số liệu của riêng "Thiền Tọa" hay "Thiền Hành" để so sánh sự tiến bộ của từng phương pháp tu tập.
-* **Ngưỡng chánh niệm:**
+* **Ngưỡng mất tập trung:**
 Đây là khái niệm quan trọng nhất để tính toán "Chất lượng thiền".
-> *"Ngưỡng chánh niệm" là khoảng cách tối đa cho phép giữa hai lần ghi nhận; nếu vượt quá thời gian này, hệ thống sẽ xem là bạn đang mất tập trung.*
+> *"Ngưỡng mất tập trung" là khoảng cách tối đa cho phép giữa hai lần ghi nhận; nếu vượt quá thời gian này, hệ thống sẽ xem là bạn đang mất tập trung.*
 
 
 * **Cơ chế hoạt động:** Ví dụ bạn đặt ngưỡng là **12 giây**.
