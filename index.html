@@ -1,73 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-	<link rel="manifest" href="./manifest2.json">
+	<link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#8b5cf6">
-    <link rel="apple-touch-icon" href="./images/icon-192.png">
-    <title>Meditator's Journal</title>
+	<link rel="apple-touch-icon" href="./images/icon-192.png">
+    <title>Nhật Ký Hành Giả</title>
     <link href="./css/css.css" rel="stylesheet">
 	<link href="./css/css2.css" rel="stylesheet">
  	<script src="./js/chart.js"></script>
-	<script src="./js/dhammapada.js"></script>
-	<script src="./js/parami.js"></script>
-    
+	<script src="./js/phapcu.js"></script>
+	<script src="./js/badges.js"></script>
 </head>
 <body>
 
 <nav class="sidebar">
         <div class="logo"><i class="fas fa-hourglass-half"></i></div>
         <div class="nav-item active" onclick="app.switchView('dashboard')">
-            <i class="fas fa-spa"></i><span class="nav-text">Journal</span>
+            <i class="fas fa-spa"></i><span class="nav-text">Nhật ký</span>
         </div>
         <div class="nav-item" onclick="app.switchView('calendar')">
-            <i class="fas fa-ranking-star"></i><span class="nav-text">Courses</span>
+            <i class="fas fa-ranking-star"></i><span class="nav-text">Lộ trình</span>
         </div>
         <div class="nav-item" onclick="app.switchView('reports')">
-            <i class="fas fa-chart-pie"></i><span class="nav-text">Activities</span>
+            <i class="fas fa-chart-pie"></i><span class="nav-text">Tổng hợp</span>
         </div>
 		<div class="nav-item" onclick="app.switchView('analytics')">
-    <i class="fas fa-microscope"></i><span class="nav-text">Analytics</span>
+    <i class="fas fa-microscope"></i><span class="nav-text">Phân tích</span>
+	
 </div>
-  
-<div class="nav-item" onclick="app.switchView('pro')">
-    <i class="fas fa-gem"></i><span class="nav-text">Advanced</span>
+       <div class="nav-item" onclick="app.switchView('pro')">
+    <i class="fas fa-gem"></i><span class="nav-text">Chuyên sâu</span>
 </div>
         
         
-         <div class="nav-item" onclick="app.switchView('achievements')">
+       <div class="nav-item" onclick="app.switchView('achievements')">
             <i class="fas fa-wreath-laurel"></i><span class="nav-text">Pāramī</span>
         </div>
-
-      
+       
     </nav>
 
 
     <main class="main">
         <header>
             <div>
-                <h1 id="page-title">Meditator's Journal</h1>
+                <h1 id="page-title">Nhật Ký Hành Giả</h1>
                 <p style="color: var(--text-light); font-size: 14px;" id="current-date"></p>
             </div>
             
             <div class="user-stats">
-                <div class="stat-item active-badge-container" onclick="app.openBadgePicker()" title="Click to select Pāramī">
+   <div class="stat-item active-badge-container" onclick="app.openBadgePicker()" title="Nhấn để đổi Pāramī">
     <div id="current-active-badge" class="badge-display">
         <i class="fas fa-gem"></i>
     </div>
 </div>
-                <div class="stat-item">
-                    <span class="stat-val" id="streak-disp">0 🔥</span>
-                    <span class="stat-label">Streak</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-val" id="xp-disp">0</span>
-                    <span class="stat-label">Mindfulness</span>
-                </div>
-				
-				<div class="stat-item clickable" onclick="app.exportData()">
+    <div class="stat-item">
+        <span class="stat-val" id="streak-disp">0 🔥</span>
+        <span class="stat-label">Liên tục</span>
+    </div>
+
+    <div class="stat-item">
+        <span class="stat-val" id="xp-disp">0</span>
+        <span class="stat-label">Chánh Niệm</span>
+    </div>
+
+<div class="stat-item clickable" onclick="app.exportData()">
     <span class="stat-val" style="
         width: 24px; 
         height: 24px; 
@@ -77,7 +76,7 @@
         font-size: 15px;"><i class="fas fa-save"></i></span>
 </div>
 
-				 <div class="stat-item clickable" onclick="app.openIntroModal()">
+ <div class="stat-item clickable" onclick="app.openIntroModal()">
     <span class="stat-val" style="
         border: 2px solid var(--text-light); 
         border-radius: 50%; 
@@ -88,57 +87,58 @@
         justify-content: center; 
         font-size: 14px;">?</span>
 </div>
-                <button class="btn" onclick="app.openChoiceModal()">
-                    <i class="fas fa-plus"></i> New Goal
-                </button>
-            </div>
+
+    <button class="btn" onclick="app.openChoiceModal()">
+        <i class="fas fa-plus"></i> Mục tiêu mới
+    </button>
+</div>
         </header>
 
         <section id="view-dashboard" class="view-section active">
             <div id="active-goals-container" class="dashboard-grid"></div>
             <div id="empty-msg" class="empty-state" style="display:none;">
                 <i class="fas fa-clipboard-list" style="font-size: 40px; margin-bottom: 10px;"></i>
-                <p>No active goals. Create one to start tracking!</p>
+                <p>Chưa có mục tiêu nào. Hãy tạo để bắt đầu!</p>
             </div>
         </section>
 
         <section id="view-calendar" class="view-section">
-		<div style="max-width: 800px; margin: 0 auto;">
+		
+            <div style="max-width: 800px; margin: 0 auto;">
         <div style="text-align: center; margin-bottom: 30px;">
-            <h2 style="font-size: 24px; margin-bottom: 10px;"><i class="fas fa-graduation-cap"></i> Meditation Courses</h2>
-            <p style="color: var(--text-light);">Certification courses designed to guide you from a beginner to an experienced practitioner.</p>
+            <h2 style="font-size: 24px; margin-bottom: 10px;"><i class="fas fa-graduation-cap"></i> Chương Trình Tu Tập</h2>
+            <p style="color: var(--text-light);">Các khoá chứng chỉ hướng dẫn bạn từ người mới bắt đầu đến hành giả thuần thục.</p>
         </div>
 
         <div id="roadmap-container"></div>
     </div>
-         
 			
         </section>
 
         <section id="view-reports" class="view-section">
     <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 25px;">
         <button class="btn" id="btn-rep-time" onclick="app.setReportMode('time')">
-            <i class="fas fa-clock"></i> Time
+            <i class="fas fa-clock"></i> Thời gian
         </button>
         <button class="btn btn-secondary" id="btn-rep-mind" onclick="app.setReportMode('mindfulness')">
-            <i class="fas fa-spa"></i> Mindfulness
+            <i class="fas fa-spa"></i> Chánh niệm
         </button>
     </div>
 
     <div class="dashboard-grid" style="grid-template-columns: 1fr;">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
-            <div class="card">
+<div class="card">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-        <h4 id="breakdown-title" style="margin: 0;">Time</h4>
+        <h4 id="breakdown-title" style="margin: 0;">Thời gian</h4>
         
         <select id="report-range-select" class="form-control" style="width: auto; padding: 5px; font-size: 13px; height: 32px;" onchange="app.renderReports(true)">
-            <option value="all">All Time</option>
-            <option value="today">Today</option>
-			<option value="yesterday">Yesterday</option>
-            <option value="this_week" selected>This Week</option>
-            <option value="last_week">Last Week</option>
-            <option value="this_month">This Month</option>
-            <option value="last_month">Last Month</option>
+            <option value="all">Toàn bộ</option>
+            <option value="today">Hôm nay</option>
+			<option value="yesterday">Hôm qua</option>
+            <option value="this_week" selected>Tuần này</option>
+            <option value="last_week">Tuần trước</option>
+            <option value="this_month">Tháng này</option>
+            <option value="last_month">Tháng trước</option>
         </select>
     </div>
     
@@ -149,7 +149,7 @@
             <div class="card">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                     <button class="btn btn-secondary" style="padding: 5px 10px;" onclick="app.changeReportWeek(-1)"><i class="fas fa-chevron-left"></i></button>
-                    <h4 id="weekly-report-title">Weekly Focus</h4>
+                    <h4 id="weekly-report-title">Tiêu điểm tuần</h4>
                     <button class="btn btn-secondary" style="padding: 5px 10px;" onclick="app.changeReportWeek(1)"><i class="fas fa-chevron-right"></i></button>
                 </div>
                 <div style="height: 300px;">
@@ -161,7 +161,7 @@
             <div class="card" style="margin-top: 20px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                 <button class="btn btn-secondary" style="padding: 5px 10px;" onclick="app.changeReportMonth(-1)"><i class="fas fa-chevron-left"></i></button>
-                <h4 id="monthly-report-title">Monthly Focus</h4>
+                <h4 id="monthly-report-title">Tiêu điểm tháng</h4>
                 <button class="btn btn-secondary" style="padding: 5px 10px;" onclick="app.changeReportMonth(1)"><i class="fas fa-chevron-right"></i></button>
             </div>
             <div style="height: 300px;">
@@ -170,63 +170,65 @@
         </div>
     </div>
 	
-	   <div class="card" style="margin-top: 20px;">
-                <h3 style="text-align: center;">Activity Calendar</h3>
+	<div class="card" style="margin-top: 20px;">
+                <h3 style="text-align: center;">Lịch Tu Tập</h3>
                 <div style="display: flex; justify-content: space-between; align-items: center; margin: 20px 0;">
                     <button class="btn btn-secondary" onclick="app.changeMonth(-1)"><i class="fas fa-chevron-left"></i></button>
-                    <h4 id="cal-month-year">Month Year</h4>
+                    <h4 id="cal-month-year">Tháng Năm</h4>
                     <button class="btn btn-secondary" onclick="app.changeMonth(1)"><i class="fas fa-chevron-right"></i></button>
                 </div>
                 <div class="calendar-grid" id="calendar-grid"></div>
-            </div>
+            </div>	
 </section>
 <section id="view-analytics" class="view-section">
-     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
-    <h2 style="margin: 0;">Meditation Analytics</h2>
-  <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+        <h2 style="margin: 0;">Phân tích Thiền tập</h2>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
             <select id="ana-goal-select" class="form-control" style="width: auto; max-width: 150px;" onchange="app.renderAnalytics(true)">
                 </select>
 
             <select id="ana-time-range" class="form-control" style="width: auto;" onchange="app.renderAnalytics()">
-			<option value="3" selected>Last 3 days</option>
-            <option value="7">Last 7 days</option>
-			<option value="14">Last 14 days</option>
-            <option value="30">Last 30 days</option>
-            <option value="90">Last 3 months</option>
-            <option value="365">All time</option>
-        </select>
+                <option value="3" selected>3 ngày qua</option>
+                <option value="7">7 ngày qua</option>
+				<option value="14">14 ngày qua</option>
+                <option value="30">30 ngày qua</option>
+                <option value="90">3 tháng qua</option>
+                <option value="365">Toàn bộ</option>
+            </select>
+        </div>
     </div>
-</div>
+
     <div class="dashboard-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 20px;">
         <div class="card" style="text-align: center; border-left: 4px solid var(--success);">
-            <div style="font-size: 12px; color: var(--text-light); text-transform: uppercase;">Average Quality</div>
+            <div style="font-size: 12px; color: var(--text-light); text-transform: uppercase;">Chất lượng trung bình</div>
             <div style="font-size: 28px; font-weight: bold; margin: 5px 0;" id="ana-avg-quality">0%</div>
-            <div style="font-size: 11px; color: var(--text-light);">Mindfulness / Time</div>
+            <div style="font-size: 11px; color: var(--text-light);">Tỷ lệ tỉnh thức/thời gian</div>
         </div>
         <div class="card" style="text-align: center; border-left: 4px solid var(--primary);">
-            <div style="font-size: 12px; color: var(--text-light); text-transform: uppercase;">Mindfulness Ratio</div>
+            <div style="font-size: 12px; color: var(--text-light); text-transform: uppercase;">Tỉ lệ Chánh niệm</div>
             <div style="font-size: 28px; font-weight: bold; margin: 5px 0;" id="ana-avg-density">0</div>
-            <div style="font-size: 11px; color: var(--text-light);">Mindfulness per minute</div>
+            <div style="font-size: 11px; color: var(--text-light);">Chánh niệm / phút</div>
         </div>
         <div class="card" style="text-align: center; border-left: 4px solid var(--danger);">
-            <div style="font-size: 12px; color: var(--text-light); text-transform: uppercase;">Total Mindfulness</div>
+            <div style="font-size: 12px; color: var(--text-light); text-transform: uppercase;">Tổng chánh niệm</div>
             <div style="font-size: 28px; font-weight: bold; margin: 5px 0;" id="ana-total-mindful">0h</div>
-            <div style="font-size: 11px; color: var(--text-light);">Focused Time</div>
+            <div style="font-size: 11px; color: var(--text-light);">Thời gian tỉnh thức</div>
         </div>
     </div>
 
     <div class="dashboard-grid" style="grid-template-columns: 1fr; gap: 20px;">
         <div class="card">
-            <h3>📈 Mindfulness Trend</h3>
-            <p style="font-size: 12px; color: var(--text-light); margin-bottom: 15px;">Track mindfulness quality across sessions</p>
+            <h3>📈 Chiều hướng Tỉnh thức</h3>
+            <p style="font-size: 12px; color: var(--text-light); margin-bottom: 15px;">So sánh chất lượng chánh niệm các thời thiền</p>
             <div style="height: 300px;">
                 <canvas id="analyticsTrendChart"></canvas>
             </div>
         </div>
 <div class="card" style="margin-top: 20px;">
-    <h3>📊 Daily Awareness</h3>
+    <h3>📊 Chánh niệm trong ngày</h3>
     <p style="font-size: 12px; color: var(--text-light); margin-bottom: 15px;">
-        Daily mindful quality & total practice time
+        Chất lượng & tổng thời lượng tu tập hàng ngày
     </p>
     <div style="height: 250px;">
         <canvas id="analyticsHourlyChart"></canvas>
@@ -239,9 +241,9 @@
             <i class="fas fa-chevron-left"></i>
         </button>
         <div>
-            <h4 style="margin: 0; display:inline-block;">Mindfulness-Alertness</h4>
+            <h4 style="margin: 0; display:inline-block;">Chánh niệm - Tỉnh giác</h4>
             <p id="density-month-title" style="font-size: 12px; color: var(--text-light); margin: 0; text-align: center; margin-top:2px;">
-                This month
+                Tháng này
             </p>
         </div>
         <button class="btn btn-secondary" style="padding: 5px 10px;" onclick="app.changeReportMonth(1)">
@@ -253,42 +255,42 @@
     <div style="height: 250px;">
         <canvas id="reportDensityChart"></canvas>
     </div>
+	
 </div>
         <div class="card">
-  <h3><i class="fas fa-chart-area"></i> Performance Comparison</h3>
-  <div style="margin-top: 15px;">
-    <table style="width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed;">
-      <thead>
-        <tr style="border-bottom: 2px solid var(--border); color: var(--text-light);">
-          <th style="text-align: left; padding: 10px;">Period</th>
-          <th style="text-align: center; padding: 10px;">Session</th>
-          <th style="text-align: center; padding: 10px;">Total Hours</th>
-          <th style="text-align: center; padding: 10px;">Quality</th>
-          <th style="text-align: center; padding: 10px;">Mindful per min</th>
-        </tr>
-      </thead>
-      <tbody id="ana-comparison-table">
-      </tbody>
-    </table>
-  </div>
-</div>
-
+            <h3><i class="fas fa-chart-area"></i> So sánh Kết quả</h3>
+            <div style="margin-top: 15px;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--border); color: var(--text-light);">
+                            <th style="text-align: left; padding: 10px;">Thời gian</th>
+                            <th style="text-align: center; padding: 10px;">Thời thiền</th>
+                            <th style="text-align: center; padding: 10px;">Tổng giờ</th>
+                            <th style="text-align: center; padding: 10px;">Chất lượng</th>
+                            <th style="text-align: center; padding: 10px;">Chánh niệm&#8203;/&#8203;phút</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ana-comparison-table">
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </section>
-     <section id="view-pro" class="view-section">
+       <section id="view-pro" class="view-section">
     <div class="dashboard-grid" style="grid-template-columns: 1fr;">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
             <div class="card">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                    <h4 style="margin: 0;">🔥 Focus Level</h4>
+                    <h4 style="margin: 0;">🔥 Mức chú tâm</h4>
                     <select id="pro-range-select" class="form-control" style="width: auto; padding: 5px; font-size: 13px; height: 32px;" onchange="app.renderProAnalytics(true)">
-                        <option value="all">All Time</option>
-            <option value="today" >Today</option>
-			<option value="yesterday">Yesterday</option>
-            <option value="this_week" selected>This Week</option>
-            <option value="last_week">Last Week</option>
-            <option value="this_month">This Month</option>
-            <option value="last_month">Last Month</option>
+                        <option value="all">Toàn bộ</option>
+                        <option value="today">Hôm nay</option>
+						<option value="yesterday">Hôm qua</option>
+                        <option value="this_week" selected>Tuần này</option>
+                        <option value="last_week">Tuần trước</option>
+                        <option value="this_month">Tháng này</option>
+                        <option value="last_month">Tháng trước</option>
                     </select>
                 </div>
                 <div style="height: 300px; display:flex; justify-content:center;">
@@ -299,7 +301,7 @@
             <div class="card">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                     <button class="btn btn-secondary" style="padding: 5px 10px;" onclick="app.changeProWeek(-1)"><i class="fas fa-chevron-left"></i></button>
-                    <h4 id="pro-weekly-title">This Week</h4>
+                    <h4 id="pro-weekly-title">Tuần này</h4>
                     <button class="btn btn-secondary" style="padding: 5px 10px;" onclick="app.changeProWeek(1)"><i class="fas fa-chevron-right"></i></button>
                 </div>
                 <div style="height: 300px;">
@@ -309,17 +311,18 @@
         </div>
 <div class="card" style="margin-top: 20px;">
     <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h4 style="margin: 0;">📈 Focus Trend</h4>
+        <h4 style="margin: 0;">📈 Xu hướng Chú tâm</h4>
         <select id="pro-trend-select" class="form-control" style="width: auto; padding: 5px; font-size: 13px; height: 32px;" onchange="app.renderProTrendChart()">
-            <option value="3" selected>Last 3 days</option>
-            <option value="7">Last 7 days</option>
-            <option value="14">Last 14 days</option>
-            <option value="30">Last 30 days</option>
-            <option value="all">All time</option>
+            <option value="3" selected>3 ngày qua</option>
+			<option value="7">7 ngày qua</option>
+            <option value="14">14 ngày qua</option>
+            <option value="30">30 ngày qua</option>
+			<option value="90">3 tháng qua</option>
+            <option value="all">Toàn bộ</option>
         </select>
     </div>
     <p style="font-size: 11px; color: var(--text-light); margin-bottom: 15px;">
-        Average focus level across meditation sessions
+        Mức chú tâm trung bình qua các thời thiền
     </p>
     <div style="height: 300px;">
         <canvas id="proTrendChart"></canvas>
@@ -328,15 +331,18 @@
         <div class="card" style="margin-top: 20px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                 <button class="btn btn-secondary" style="padding: 5px 10px;" onclick="app.changeProMonth(-1)"><i class="fas fa-chevron-left"></i></button>
-                <h4 id="pro-monthly-title">This Month</h4>
+                <h4 id="pro-monthly-title">Tháng này</h4>
                 <button class="btn btn-secondary" style="padding: 5px 10px;" onclick="app.changeProMonth(1)"><i class="fas fa-chevron-right"></i></button>
             </div>
             <div style="height: 300px;">
                 <canvas id="proMonthlyChart"></canvas>
             </div>
         </div>
+		
+		
     </div>
 </section>
+
 <section id="view-achievements" class="view-section">
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; align-items: stretch; width: 100%; padding: 10px 0;">
     
@@ -346,7 +352,7 @@
         <div class="altar-bg-glow"></div>
         
         <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-light); margin-bottom: 15px; z-index: 2;">
-            Cultivating Pāramī
+            Pāramī Hành Trì
         </div>
 
         <div id="altar-icon" style="font-size: 60px; margin-bottom: 15px; z-index: 2; filter: drop-shadow(0 0 15px rgba(0,0,0,0.5)); transition: transform 0.3s ease;" 
@@ -355,7 +361,7 @@
         </div>
 
         <div id="altar-title" style="font-size: 24px; font-weight: bold; margin-bottom: 5px; z-index: 2; color: var(--text);">
-            Select Pāramī
+            Chọn Pāramī
         </div>
     </div>
 
@@ -365,7 +371,7 @@
          style="flex: 1; min-width: 320px; text-align: center; border-left: 5px solid var(--zen); cursor: pointer; transition: transform 0.2s; user-select: none; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 30px;">
         
         <h3 style="color: var(--zen); margin-bottom: 15px;">
-            <i class="fas fa-dharmachakra"></i> Dhammapada
+            <i class="fas fa-dharmachakra"></i> Kinh Pháp Cú
         </h3>
         
         <div id="dhammapada-display" style="font-style: italic; font-size: 16px; line-height: 1.6; color: var(--text); min-height: 80px; display: flex; align-items: center; justify-content: center; transition: opacity 0.3s ease;">
@@ -376,7 +382,7 @@
     </div>
 </div>
     <div class="card" style="margin-top: 20px;">
-        <h3 style="text-align: center;"><i class="fas fa-wreath-laurel"></i> Pāramī</h3>
+        <h3 style="text-align: center;"><i class="fas fa-wreath-laurel"></i> Pāramī </h3>
         <div id="achievement-list" style="margin-top: 20px; display: grid; gap: 10px;"></div>
     </div>
 </section>
@@ -384,80 +390,80 @@
 
     <div class="modal" id="choice-modal">
         <div class="modal-content">
-            <h2 style="text-align:center;">Choose Goal Type</h2>
+            <h2 style="text-align:center;">Chọn loại mục tiêu</h2>
             <div class="choice-btn-container">
                 <div class="choice-card" onclick="app.openModal(null, 'meditation')">
                     <i class="fas fa-spa" style="color: var(--zen);"></i>
-                    <h3>Meditate</h3>
-                    <p style="font-size:12px; color:var(--text-light); margin-top:5px;">Track Mindfulness</p>
+                    <h3>Thiền Định</h3>
+                    <p style="font-size:12px; color:var(--text-light); margin-top:5px;">Theo dõi chánh niệm</p>
                 </div>
                 <div class="choice-card" onclick="app.openModal(null, 'standard')">
                     <i class="fas fa-tasks" style="color: var(--primary);"></i>
-                    <h3>Activity</h3>
-                    <p style="font-size:12px; color:var(--text-light); margin-top:5px;">Track Progress</p>
+                    <h3>Công Việc</h3>
+                    <p style="font-size:12px; color:var(--text-light); margin-top:5px;">Theo dõi tiến độ</p>
                 </div>
             </div>
-            <button class="btn btn-secondary" style="width:100%; margin-top:20px;" onclick="app.closeChoiceModal()">Cancel</button>
+            <button class="btn btn-secondary" style="width:100%; margin-top:20px;" onclick="app.closeChoiceModal()">Hủy</button>
         </div>
     </div>
 
     <div class="modal" id="goal-modal">
         <div class="modal-content">
-            <h2 id="modal-title" style="margin-bottom: 20px;">Create New Goal</h2>
+            <h2 id="modal-title" style="margin-bottom: 20px;">Tạo mục tiêu mới</h2>
             <form onsubmit="app.saveGoal(event)">
                 <input type="hidden" id="g-id"> 
                 <input type="hidden" id="g-type"> 
                 
                 <div class="form-group">
-                    <label>Goal Name</label>
+                    <label>Tên mục tiêu</label>
                     <input type="text" id="g-name" class="form-control" required>
                 </div>
                 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                     <div class="form-group">
-                        <label>Category</label>
+                        <label>Danh mục</label>
                         <select id="g-cat" class="form-control">
                             </select>
                     </div>
                     <div class="form-group">
-                        <label>Color</label>
+                        <label>Màu sắc</label>
                         <input type="color" id="g-color" class="form-control" value="#6366f1">
                     </div>
                 </div>
                 
                 <div class="form-group" style="background: rgba(16, 185, 129, 0.1); padding: 10px; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.3);">
-                    <label style="color: var(--success);">Daily Target</label>
+                    <label style="color: var(--success);">Mục tiêu hàng ngày</label>
                     <input type="number" id="g-daily-target" class="form-control" min="0" value="30">
-                    <small id="g-daily-hint" style="color: var(--success); font-size: 11px;">Minutes per day</small>
+                    <small id="g-daily-hint" style="color: var(--success); font-size: 11px;">Phút mỗi ngày</small>
                 </div>
                 
                 <div class="form-group">
-                    <label>Achieve in</label>
+                    <label>Thành tựu trong</label>
                     <input type="number" id="g-lifetime-target" class="form-control" required min="1" value="1000">
-                    <small id="g-life-hint" style="color: var(--text-light); font-size: 11px;">Minutes</small>
+                    <small id="g-life-hint" style="color: var(--text-light); font-size: 11px;">Tổng số phút</small>
                 </div>
                 
                 <div style="display: flex; justify-content: flex-end; gap: 10px;">
-                    <button type="button" class="btn btn-secondary" onclick="app.closeModal()">Cancel</button>
-                    <button type="submit" class="btn" id="btn-save-goal">Create Goal</button>
+                    <button type="button" class="btn btn-secondary" onclick="app.closeModal()">Hủy</button>
+                    <button type="submit" class="btn" id="btn-save-goal">Tạo mục tiêu</button>
                 </div>
             </form>
         </div>
     </div>
 <div class="modal" id="backup-modal">
     <div class="modal-content">
-        <h2 style="margin-bottom: 10px; text-align: center;">Back up & Restore</h2>
+        <h2 style="margin-bottom: 10px; text-align: center;">Sao lưu & Khôi phục</h2>
         
         <div class="desktop-actions" style="margin-bottom: 20px;">
             <p style="color: var(--text-light); text-align: center; font-size: 12px; margin-bottom: 10px;">
-                <i class="fas fa-box-archive"></i> <strong>Backup & restore data from file:</strong>
+                <i class="fas fa-box-archive"></i> <strong>Sao lưu & khôi phục dữ liệu:</strong>
             </p>
             <div style="display: flex;  justify-content: center; gap: 10px;">
                 <button class="btn" style="flex: 1;" onclick="app.downloadFile()">
-                    <i class="fas fa-download"></i> Backup
+                    <i class="fas fa-download"></i> Sao&nbsp;lưu
                 </button>
-                <button class="btn btn-secondary"; style="flex: 1;" onclick="document.getElementById('backup-file-input').click()">
-                    <i class="fas fa-file-import"></i> Restore
+                <button class="btn btn-secondary"; style="flex: 1;" " onclick="document.getElementById('backup-file-input').click()">
+                    <i class="fas fa-file-import"></i> Khôi&nbsp;phục
                 </button>
                 <input type="file" id="backup-file-input" style="display: none;" accept=".json, .txt" onchange="app.handleFileUpload(this)">
             </div>
@@ -465,115 +471,118 @@
 <div style="margin-top: 20px; display: flex; justify-content: center; gap: 10px;">
     
     <button class="btn btn-secondary" style="flex: 1;" onclick="app.shareBackup()">
-        <i class="fas fa-share-alt"></i> Share
+        <i class="fas fa-share-alt"></i> Chia&nbsp;sẻ
     </button>
 
     <button class="btn btn-secondary" style="flex: 1; border-color: var(--danger); color: var(--danger);" onclick="app.closeBackupModal()">
-        Close
+        Đóng
     </button>
 </div>
 </div></div>
-    <div class="modal" id="session-modal">
+    <div class="modal" id="session-modal" >
     <div class="modal-content">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <h2 id="session-title" style="margin: 0;">Log Session</h2>
+            <h2 id="session-title" style="margin: 0;">Ghi nhận phiên</h2>
             <button type="button" id="btn-delete-session" class="btn-icon" 
                 style="background: transparent; color: var(--danger); display: none; width: 30px; height: 30px;" 
                 onclick="app.deleteSession()"
-                title="Delete this session">
+                title="Xóa phiên này">
                 <i class="fas fa-trash"></i>
             </button>
         </div>
-        <form onsubmit="app.logSessionConfirm(event)">
+            <form onsubmit="app.logSessionConfirm(event)">
                 <input type="hidden" id="s-goal-id" />
                 <input type="hidden" id="s-log-id" />
                 
                 <div class="form-group">
-                    <label>Start Date & Time</label>
+                    <label>Ngày & Giờ bắt đầu</label>
                     <input type="datetime-local" id="s-date" class="form-control" required />
                 </div>
                 
                 <div class="form-group">
-                    <label>Duration (Minutes)</label>
+                    <label>Thời lượng (Phút)</label>
                     <input type="number" id="s-minutes" class="form-control" required min="1" />
                 </div>
-<div class="form-group" id="s-mindfulness-group" style="display:none; background: rgba(167, 139, 250, 0.1); padding: 10px; border-radius: 8px; border: 1px solid rgba(167, 139, 250, 0.3);">
-    <label style="color: var(--zen);">Mindfulness (Count)</label>
+                <div class="form-group" id="s-mindfulness-group" style="display:none; background: rgba(167, 139, 250, 0.1); padding: 10px; border-radius: 8px; border: 1px solid rgba(167, 139, 250, 0.3);">
+    <label style="color: var(--zen);">Số lần chánh niệm</label>
     <input type="number" id="s-mindfulness" class="form-control" min="0" value="0" />
-	    <div style="margin-top: 10px; border-top: 1px solid rgba(167, 139, 250, 0.3); padding-top: 10px;">
-        <label style="color: var(--zen); font-size: 12px;">Distraction Threshold (secs)</label>
+    
+    <div style="margin-top: 10px; border-top: 1px solid rgba(167, 139, 250, 0.3); padding-top: 10px;">
+        <label style="color: var(--zen); font-size: 12px;">Ngưỡng mất tập trung (giây)</label>
         <input type="number" id="s-threshold" class="form-control" min="1" value="12" style="background: rgba(0,0,0,0.2);" />
     </div>
 </div>
-                <div class="form-group">
-                    <label>Notes (Optional)</label>
-                    <textarea id="s-notes" class="form-control" placeholder="What did you focus on?"></textarea>
-                    <div id="session-tags" class="tag-container"></div>
-                   </div>
+               <div class="form-group">
+    <label>Ghi chú (Tùy chọn)</label>
+    <textarea id="s-notes" class="form-control" placeholder="Bạn đã tập trung vào điều gì?"></textarea>
+    <div id="session-tags" class="tag-container"></div>
+</div>
 
                 <div style="display: flex; justify-content: flex-end; gap: 10px;">
-                    <button type="button" class="btn btn-secondary" onclick="app.closeSessionModal()">Cancel</button>
-                    <button type="submit" class="btn">Save</button>
+                    <button type="button" class="btn btn-secondary" onclick="app.closeSessionModal()">Hủy</button>
+                    <button type="submit" class="btn">Lưu</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <div id="meditation-overlay">
-        <div class="med-timer-disp" id="med-timer">00:00</div>
-        <div class="med-controls">
-    <button class="btn btn-secondary" onclick="app.openMedSettings()" title="Touch settings">
+ <div id="meditation-overlay">
+    <div class="med-timer-disp" id="med-timer">00:00</div>
+    <div class="med-controls">
+    <button class="btn btn-secondary" onclick="app.openMedSettings()" title="Cài đặt chạm">
         <i class="fas fa-cog"></i>
     </button>
-    
+ 
     <button class="btn" style="background-color: var(--danger); color: white;" onclick="app.concludeMeditationSession()"><i class="fas fa-stop"></i></button>
 </div>
-        <div id="med-quote-container" class="med-quote-box">
+	
+	<div id="med-quote-container" class="med-quote-box">
     <div id="med-quote-text" style="font-style: italic; font-size: 14px; margin-bottom: 8px; line-height: 1.4; text-shadow: 0 2px 4px rgba(0,0,0,0.8);"></div>
 </div>
-        <div class="meditation-circle" id="med-counter">0</div>
-        
-        <div class="med-instruction">Tap Screen for Mindfulness</div>
-    </div>
+    <div class="meditation-circle" id="med-counter">0</div>
+    
+    <div class="med-instruction" style="text-align: center;">Chạm màn hình để ghi&nbsp;nhận&nbsp;chánh&nbsp;niệm</div>
+</div>
 
     <div class="modal" id="meditation-finish-modal">
         <div class="modal-content">
-            <h2 style="text-align: center; margin-bottom: 10px;">Session Complete 🌿</h2>
+            <h2 style="text-align: center; margin-bottom: 10px;">Thời thiền hoàn tất 🌿</h2>
             <div style="text-align:center; margin: 20px 0; display:flex; justify-content:space-around; align-items:center;">
                 <div>
                     <div style="font-size: 30px; font-weight:bold; color:var(--zen)" id="med-finish-count">0</div>
-                    <div style="color:var(--text-light); font-size:12px;">Mindfulness</div>
+                    <div style="color:var(--text-light); font-size:12px;">Chánh niệm</div>
                 </div>
                 <div style="height:40px; width:1px; background:var(--border);"></div>
                 <div>
                     <div style="font-size: 30px; font-weight:bold; color:var(--text)" id="med-finish-time">0m</div>
-                    <div style="color:var(--text-light); font-size:12px;">Time Spent</div>
+                    <div style="color:var(--text-light); font-size:12px;">Thời gian</div>
                 </div>
             </div>
             <div class="form-group">
-                <label>Journal Notes</label>
-                <textarea id="med-finish-notes" class="form-control" placeholder="Any insights or distractions?"></textarea>
-				<div id="finish-tags" class="tag-container"></div>
-            </div>
-             <div id="med-finish-actions" style="display:flex; gap:10px; justify-content:flex-end; margin-top:20px;">
-             <button id="btn-med-discard" class="btn btn-secondary" onclick="app.discardMeditation()">Exit</button>
-             <button id="btn-med-save" class="btn" style="background:var(--zen); color:white" onclick="app.saveMeditationLog()">Save to Journal</button>
-            </div>
+    <label>Nhật ký</label>
+    <textarea id="med-finish-notes" class="form-control" placeholder="Chánh niệm của bạn có tốt không?"></textarea>
+    <div id="finish-tags" class="tag-container"></div>
+</div>
+            <div id="med-finish-actions" style="display:flex; gap:10px; justify-content:flex-end; margin-top:20px;">
+             <button id="btn-med-discard" class="btn btn-secondary" onclick="app.discardMeditation()">Thoát</button>
+             <button id="btn-med-save" class="btn" style="background:var(--zen); color:white" onclick="app.saveMeditationLog()">Lưu nhật ký</button>
         </div>
     </div>
+</div>
+
 <div class="modal" id="quiz-modal" style="z-index: 5000;">
     <div class="modal-content">
-        <h2 style="text-align: center; margin-bottom: 20px;"><i class="fas fa-question-circle"></i> Quiz</h2>
+        <h2 style="text-align: center; margin-bottom: 20px;"><i class="fas fa-question-circle"></i> Trắc Nghiệm</h2>
         <p style="color: var(--text-light); font-size: 13px; text-align: center; margin-bottom: 20px;">
-            Answer all questions correctly to complete the lesson.
+            Trả lời đúng tất cả câu hỏi để hoàn thành bài học.
         </p>
         
         <div id="quiz-container">
             </div>
 
         <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 25px; border-top: 1px solid var(--border); padding-top: 15px;">
-            <button class="btn btn-secondary" onclick="document.getElementById('quiz-modal').style.display='none'">Close</button>
-            <button class="btn" onclick="app.submitQuiz()">Check Results</button>
+            <button class="btn btn-secondary" onclick="document.getElementById('quiz-modal').style.display='none'">Đóng</button>
+            <button class="btn" onclick="app.submitQuiz()">Kiểm tra kết quả</button>
         </div>
     </div>
 </div>
@@ -581,9 +590,9 @@
         <div class="modal-content" style="width: 600px;">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 20px;">
                 <div>
-                    <h2 style="margin-bottom: 5px;">Meditation Session</h2>
+                    <h2 style="margin-bottom: 5px;">Thời thiền</h2>
                     <p id="graph-date" style="color: var(--text-light); font-size: 14px; margin: 0;"></p>
-             </div>
+                </div>
                
             </div>
 
@@ -592,28 +601,30 @@
             </div>
             
             <div style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
-			 <button class="btn btn-secondary" id="btn-export-session" title="Copy JSON Data">
+			<button class="btn btn-secondary" id="btn-export-session" title="Sao chép dữ liệu JSON">
                     <i class="fas fa-file-code"></i>
                 </button>
-			<select id="graph-type-select" class="form-control" style="width: auto; padding: 5px 5px 5px; height: 36px; font-size: 13px; cursor: pointer;" onchange="app.updateSessionChart()">
-			                    <option value="interval">☁️ Distraction</option>
-                    <option value="intensity">🌱 Mindfulness</option>
-                <option value="pro">🔥 Focus Level</option> </select>
-               <button class="btn btn-secondary" onclick="document.getElementById('graph-modal').style.display='none'" title="Close"><i class="fas fa-xmark"></i></button>
+			<select id="graph-type-select" class="form-control" style="width: auto; padding: 5px; height: 36px; font-size: 13px; cursor: pointer;" onchange="app.updateSessionChart()">
+    <option value="interval">☁️ Thất niệm</option>
+    <option value="intensity">🌱 Chánh niệm</option>
+    <option value="pro">🔥 Mức chú tâm</option> </select>
+                
+                <button class="btn btn-secondary" onclick="document.getElementById('graph-modal').style.display='none'" title="Đóng"><i class="fas fa-xmark"></i></button>
+				 
             </div>
         </div>
     </div>
 
     <div class="modal" id="day-details-modal" style="overflow-y: auto;">
     <div class="modal-content">
-        <h2 id="day-modal-title" style="margin-bottom: 10px; font-size: 20px;">Day Details</h2>
+        <h2 id="day-modal-title" style="margin-bottom: 10px; font-size: 20px;">Chi tiết ngày</h2>
         
         <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 15px;">
             <button class="btn" id="btn-modal-time" style="padding: 5px 15px; font-size: 12px;" onclick="app.switchDayChart('time')">
-                <i class="fas fa-clock"></i> Time
+                <i class="fas fa-clock"></i> Thời gian
             </button>
             <button class="btn btn-secondary" id="btn-modal-mind" style="padding: 5px 15px; font-size: 12px;" onclick="app.switchDayChart('mindfulness')">
-                <i class="fas fa-spa"></i> Mindfulness
+                <i class="fas fa-spa"></i> Chánh niệm
             </button>
         </div>
 
@@ -621,239 +632,290 @@
             <canvas id="dayBreakdownChart"></canvas>
         </div>
 
-        <h3 style="font-size: 14px; color: var(--text-light); border-bottom: 1px solid var(--border); padding-bottom: 5px; margin-bottom: 10px;">Activity Log</h3>
+        <h3 style="font-size: 14px; color: var(--text-light); border-bottom: 1px solid var(--border); padding-bottom: 5px; margin-bottom: 10px;">Nhật ký hoạt động</h3>
         <div id="day-session-list" style="max-height: 150px; overflow-y: auto;"></div>
         
         <div style="display: flex; justify-content: flex-end; margin-top: 20px; border-top: 1px solid var(--border); padding-top: 15px;">
-            <button class="btn btn-secondary" onclick="app.closeDayModal()">Close</button>
+            <button class="btn btn-secondary" onclick="app.closeDayModal()">Đóng</button>
         </div>
     </div>
 </div>
 
     <div id="toast" class="toast">
-        <i class="fas fa-info-circle"></i> <span id="toast-msg">Message</span>
+        <i class="fas fa-info-circle"></i> <span id="toast-msg">Thông báo</span>
     </div>
-	
 	<div class="modal" id="med-settings-modal" style="z-index: 2000;">
     <div class="modal-content" style="max-width: 350px;">
-        <h3 style="margin-bottom: 10px; text-align: center;">
-            Interaction Settings 
+       <h3 style="margin-bottom: 10px; text-align: center;">
+            Cấu hình Tương tác 
             <i class="fas fa-info-circle" 
                style="cursor: help; color: var(--primary); margin-left: 5px;" 
                onclick="app.showInteractionInfo()" 
-               title="Click to see definition"></i>
+               title="Nhấn để xem định nghĩa"></i>
         </h3>
         
-        <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; color: var(--text-light); text-align: center;">
-            <i class="fas fa-fingerprint"></i> <strong>Tap</strong> to record mindfulness,<br>
-			<i class="fas fa-hand-pointer"></i> <strong>Hold</strong> to record alertness.
+        <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; color: var(--text-light); margin-left:20px; text-align: left;">
+            <i class="fas fa-fingerprint"></i> <strong>Chạm</strong> để ghi nhận chánh niệm,<br>
+			<i class="fas fa-hand-pointer"></i> <strong>Ấn giữ</strong> để ghi nhận tỉnh giác.
         </div>
 
         <div class="form-group">
-            <label>Hold Duration: <span id="disp-hold-time" style="color:var(--primary)">0.5s</span></label>
+            <label>Thời gian ấn giữ: <span id="disp-hold-time" style="color:var(--primary)">0.5s</span></label>
             <input type="range" id="inp-hold-time" class="form-control" min="400" max="1000" step="100" oninput="app.updateMedSettingDisplay()">
         </div>
 <div id="setting-pro-legend" style="background: rgba(167, 139, 250, 0.1); padding: 10px; border-radius: 8px; border: 1px solid rgba(167, 139, 250, 0.3); margin-bottom: 15px;">
-    <div style="font-size: 11px; margin-bottom: 5px; color: var(--text-light)">🔥 Focus Level:</div>
-    <div style="font-size: 12px; display:flex; gap:10px;text-align: center;"> <div class="text-q4">1 Tap: <strong>Low;</strong></div> <div class="text-q3">2 Taps: <strong>Medium;</strong></div> <div class="text-q2">3 Taps: <strong>Good.</strong></div> </div>
+    <div style="font-size: 11px; margin-bottom: 5px; color: var(--text-light)">🔥 Mức chú tâm:</div>
+    <div style="font-size: 12px; display:flex; gap:10px;text-align: center;"> <div class="text-q4">1 Chạm: <strong>Thấp;</strong></div> <div class="text-q3">2 Chạm: <strong>TB;</strong></div> <div class="text-q2">3 Chạm: <strong>Tốt.</strong></div> </div>
 	<div style="font-size: 11px; text-align: center; margin-top: 5px">
-        <div><span style="color: var(--text-light)">15 consecutive logs ≤ <i>Distraction Threshold:</i></span> <br><span class="text-q4"><strong>Low</strong></span> → <span class="text-q3"><strong>Medium</strong></span> → <span class="text-q2"><strong>Good</strong></span> → <span class="text-q1"><strong>High</strong></span></div>
+        <div><span style="color: var(--text-light)">15 lần ghi nhận liên tục ≤ <i>Ngưỡng mất tập trung:</i></span><br> <span class="text-q4"><strong>Thấp</strong></span> → <span class="text-q3"><strong>TB</strong></span> → <span class="text-q2"><strong>Tốt</strong></span> → <span class="text-q1"><strong>Cao</strong></span></div>
     </div>
 </div>
+
+
         <div class="form-group" style="background: rgba(251, 191, 36, 0.1); padding: 10px; border-radius: 8px; border: 1px solid rgba(251, 191, 36, 0.3); margin-top: 15px;">
             <div style="display:flex; justify-content:space-between; align-items:center;">
-                <label style="margin:0; color: var(--warning);"><i class="fas fa-check-double"></i> Confirmation Mode</label>
+                <label style="margin:0; color: var(--warning);"><i class="fas fa-check-double"></i> Chế độ Xác nhận</label>
                 <input type="checkbox" id="inp-confirm-mode" style="width: 20px; height: 20px; accent-color: var(--warning);" onchange="app.toggleConfirmSlider()">
             </div>
             
             <div id="confirm-slider-group" style="margin-top: 10px; display:none; border-top: 1px solid rgba(251, 191, 36, 0.3); padding-top: 10px;">
-                <label style="font-size:12px; color: var(--text-light);">Appearance Frequency: <span id="disp-confirm-prob" style="color:var(--warning); font-weight:bold;">100%</span></label>
+                <label style="font-size:12px; color: var(--text-light);">Tần suất xuất hiện: <span id="disp-confirm-prob" style="color:var(--warning); font-weight:bold;">100%</span></label>
                 <input type="range" id="inp-confirm-prob" class="form-control" min="10" max="100" step="10" oninput="app.updateConfirmProbDisplay()">
                 <div style="font-size: 11px; color: var(--text-light); margin-top: 5px; font-style: italic; line-height: 1.4;">
-                    1st touch to "wait", 2nd touch to "confirm".<br>
-                    (Only applies to <strong>Low</strong> focus level).
+                    Chạm lần 1 để "chờ", chạm lần 2 để "xác nhận".<br>
+                    (Chỉ áp dụng cho mức chú tâm <strong>Thấp</strong>).
                 </div>
             </div>
         </div>
 
         <div class="form-group" style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;">
-            <label style="margin:0"><i class="fas fa-mobile-alt"></i> Haptic Feedback</label>
+            <label style="margin:0"><i class="fas fa-mobile-alt"></i> Rung phản hồi</label>
             <input type="checkbox" id="inp-vibrate" style="width: 20px; height: 20px;" onchange="app.saveMedSettings()">
         </div>
 
         <div style="margin-top: 25px;">
-            <button class="btn" style="width: 100%;" onclick="app.closeMedSettings()">Save & Close</button>
+            <button class="btn" style="width: 100%;" onclick="app.closeMedSettings()">Đóng & Áp dụng</button>
         </div>
     </div>
 </div>
-	<div class="modal" id="intro-modal" style="z-index: 9999;">
+	
+<div class="modal" id="intro-modal" style="z-index: 9999;">
     <div class="modal-content" style="max-width: 800px; width: 95%; max-height: 90vh; display: flex; flex-direction: column; padding: 0;">
         
         <div style="padding: 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--surface); border-radius: 16px 16px 0 0;">
-            <h2 style="margin: 0;">✨ Meditator's Journal</h2>
+            <h2 style="margin: 0;">✨ Nhật Ký Hành Giả</h2>
             <button class="btn-icon" onclick="app.closeIntroModal()" style="color: var(--text-light); background: transparent;"><i class="fas fa-times"></i></button>
         </div>
 
         <div style="padding: 20px; overflow-y: auto; line-height: 1.6; color: var(--text-light);">
             
-            <p><strong>Meditator's Journal</strong> is an application designed to support both spiritual practice and daily work. The app helps practitioners track progress in their professional tasks as well as meditation sessions, recording levels of awareness through "Mindfulness" counts, and visualizing mental states via real-time charts and graphs.</p>
+            <p><strong>Nhật Ký Hành Giả</strong> là ứng dụng hỗ trợ tu tập và làm việc. Ứng dụng giúp hành giả theo dõi tiến trình trong công việc cũng như trong hành thiền, ghi nhận mức độ tỉnh giác thông qua số lần "Chánh Niệm", và trực quan hóa trạng thái tâm trí qua biểu đồ & đồ thị theo thời gian thực.</p>
             
-            <img src="./images/1en.png" alt="Dashboard Preview" style="width: 100%; border-radius: 8px; border: 1px solid var(--border); margin: 10px 0;">
+            <img src="./images/1vi.png" alt="Dashboard Preview" style="width: 100%; border-radius: 8px; border: 1px solid var(--border); margin: 10px 0;">
 
-            <h3 style="color: var(--text); margin-top: 20px;">✨ Core Concepts</h3>
-            <p>To use the app effectively, you should understand the following indicators:</p>
+            <h3 style="color: var(--text); margin-top: 20px;">✨ Các Khái Niệm Cốt Lõi</h3>
+            <p>Để sử dụng ứng dụng hiệu quả, bạn cần nắm rõ các chỉ số sau:</p>
             <ul style="padding-left: 20px; margin-bottom: 15px;">
-                <li><strong>Mindfulness:</strong> A unit for measuring awareness. Every time you recognize your breath or mental state and touch the screen, one "Mindfulness" point is recorded.</li>
-                <li><strong>Mindful State:</strong> A state where the frequency of noting remains stable and regular.</li>
-                <li><strong>Unmindful:</strong> A state where the mind is distracted or drowsy, resulting in few or no recordings over a period of time.</li>
-                <li><strong>Diligence Streak:</strong> The number of consecutive days you have maintained your practice.</li>
+                <li><strong>Chánh Niệm</strong> là đơn vị đo lường sự tỉnh thức. Mỗi lần bạn nhận biết được hơi thở hoặc trạng thái tâm trí và chạm vào màn hình, một "Chánh Niệm" sẽ được ghi lại.</li>
+                <li><strong>Chánh niệm tốt:</strong> Trạng thái khi tần suất ghi nhận (Niệm) duy trì ở mức ổn định và đều đặn.</li>
+                <li><strong>Thất niệm:</strong> Trạng thái khi tâm trí bị xao nhãng hoặc buồn ngủ, dẫn đến việc không có hoặc có rất ít ghi nhận trong một khoảng thời gian.</li>
+                <li><strong>Chuỗi Tinh Tấn:</strong> Số ngày liên tiếp bạn thực hiện tu tập.</li>
             </ul>
 
-            <h3 style="color: var(--text); margin-top: 20px;">✨ Key Features</h3>
+            <h3 style="color: var(--text); margin-top: 20px;">✨ Tính Năng Nổi Bật</h3>
             
-            <h4 style="color: var(--primary);">1. Diverse Goal Management</h4>
+            <h4 style="color: var(--primary);">1. Quản Lý Mục Tiêu Đa Dạng</h4>
             <ul style="padding-left: 20px;">
-                <li><strong>Two main types of goals:</strong>
+                <li><strong>Hai loại mục tiêu chính:</strong>
                     <ul>
-                        <li><strong>ॐ Meditation:</strong> Tracks meditation duration and counts mindfulness recognitions.</li>
-                        <li><strong>⚡ Work:</strong> A traditional countdown timer used for work, study (similar to Pomodoro), or other habits.</li>
+                        <li><strong>ॐ Thiền Định:</strong> Theo dõi thời gian ngồi thiền và đếm số lần ghi nhận chánh niệm.</li>
+                        <li><strong>⚡ Công Việc:</strong> Đồng hồ đếm ngược truyền thống dùng cho công việc, học tập (Pomodoro) hoặc các thói quen khác.</li>
                     </ul>
                 </li>
-                <li><strong>Customization:</strong> Set daily goals (minutes), target completion time, representative colors, and management categories.</li>
+                <li><strong>Tùy biến:</strong> Tự đặt mục tiêu hàng ngày (số phút), thời gian cần dành để hoàn thành mục tiêu, màu sắc đại diện và danh mục quản lý.</li>
             </ul>
-            <h4 style="color: var(--primary); margin-top: 15px;">2. Interaction Settings</h4>
-<p>In the meditation interface, tap the <i class="fas fa-cog"></i> button to open interaction settings. The app supports haptic feedback vibration and helps you record two mental states simultaneously with 4 levels of mindfulness intensity.</p>
+
+            <h4 style="color: var(--primary); margin-top: 15px;">2. Cấu hình Tương Tác</h4>
+<p>Trong giao diện thiền, nhấn nút <i class="fas fa-cog"></i> để mở cài đặt tương tác. Ứng dụng hỗ trợ rung phản hồi xúc giác & giúp bạn ghi nhận đồng thời 2 trạng thái tâm cùng 4 thang điểm cho mức độ chú tâm. </p>
 
 <div style="background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 8px; border: 1px solid var(--border);">
     <ul style="padding-left: 20px; margin: 0;">
         <li style="margin-bottom: 12px;">
-            <i class="fas fa-fingerprint" style="color: var(--zen); width: 20px;"></i> <strong>Tap = Mindfulness (Keeping the mind on the Object):</strong> 
-            <br>Lightly tap the screen to record focus on your meditation object. For example: one tap for each full breath (in & out) counts as one mindfulness.
+            <i class="fas fa-fingerprint" style="color: var(--zen); width: 20px;"></i> <strong>Chạm = Chánh Niệm (giữ tâm trên đề mục):</strong> 
+            <br>Chạm nhẹ màn hình để ghi nhận sự chú tâm vào đề mục thiền, ví dụ: 1 lần chạm cho 1 hơi thở vào ra tính là 1 chánh niệm.
             <div style="font-size: 13px; color: var(--text-light); margin-top: 4px;">
-                <em>*<strong>Combo Mechanism:</strong></em> Every session starts at <b>Low</b> intensity. For every 15 consecutive entries with a time gap ≤ <i>Distraction Threshold</i>, the focus level increases by one tier (<span class="text-q4"><strong>Low</strong></span> → <span class="text-q3"><strong>Med</strong></span> → <span class="text-q2"><strong>Good</strong></span> → <span class="text-q1"><strong>High</strong></span>). Exceeding the threshold resets the combo to Low.
+                <em>*<strong>Cơ chế Chuỗi (Combo):</strong></em> Mọi phiên đều bắt đầu ở mức chú tâm <b>Thấp</b>. Cứ mỗi 15 lần ghi nhận liên tục với khoảng cách thời gian ≤ <i>Ngưỡng mất tập trung</i>, mức chú tâm sẽ được nâng lên một bậc (<span class="text-q4"><strong>Thấp</strong></span> → <span class="text-q3"><strong>TB</strong></span> → <span class="text-q2"><strong>Tốt</strong></span> → <span class="text-q1"><strong>Cao</strong></span>). Nếu để quá ngưỡng, chuỗi sẽ reset về mức Thấp.
             <br>
-			 <em>*<strong>Manual control:</strong></em> Allows you to <strong>actively categorize</strong> your focus level based on specific hand gestures:
-                        <div style="font-size: 12px; display:flex; gap:10px;text-align: center;"> <div class="text-q4">1 Tap: <strong>Low;</strong></div> <div class="text-q3">2 Taps: <strong>Medium;</strong></div> <div class="text-q2">3 Taps: <strong>Good.</strong></div> </div>
+			 <em>*<strong>Chế độ Thủ công:</strong></em> Cho phép bạn <strong>chủ động phân loại</strong> mức độ chú tâm dựa trên thao tác tay của bạn:
+                        <div style="font-size: 12px; display:flex; gap:10px;text-align: center;"> <div class="text-q4">1 Chạm: <strong>Thấp;</strong></div> <div class="text-q3">2 Chạm: <strong>TB;</strong></div> <div class="text-q2">3 Chạm: <strong>Tốt.</strong></div> </div>
                     
         </div>
         
         <li style="margin-bottom: 12px;">
-            <i class="fas fa-hand-pointer" style="color: #818cf8; width: 20px;"></i> <strong>Hold = Alertness (Recognizing mental states, Detecting distractions):</strong> 
-            <br>Press and hold the screen to record Alertness. Alertness is when you <b>realize</b> your current state of mind (e.g., catching your mind wandering, having stray thoughts, or losing focus on the object). This is the moment of recognition and returning.
+            <i class="fas fa-hand-pointer" style="color: #818cf8; width: 20px;"></i> <strong>Ấn giữ = Tỉnh Giác (nhận biết trạng thái tâm, phát hiện xao nhãng):</strong> 
+            <br>Ấn và giữ màn hình để ghi nhận Tỉnh Giác. Tỉnh giác là khi bạn <b>nhận biết</b> được trạng thái tâm mình (ví dụ: chợt nhận ra mình đang phóng tâm, đang có tạp niệm, hoặc đang mất tập trung trên đề mục thiền). Đây là khoảnh khắc của sự nhận biết & quay trở lại.
         </li>
 
         <li style="margin-top: 5px; border-top: 1px solid rgba(251, 191, 36, 0.2); padding-top: 10px;">
-            <strong style="color: var(--warning);"><i class="fas fa-check-double"></i> Confirmation Mode:</strong> 
-            Designed for users who may tap unconsciously. When enabled, the first tap won't be recorded immediately. You must tap a second time (within 1-3 seconds) to confirm it as a conscious action.
+            <strong style="color: var(--warning);"><i class="fas fa-check-double"></i> Chế độ Xác nhận:</strong> 
+            Dành cho người dùng hay chạm máy vô thức. Khi bật, một lần chạm đầu tiên sẽ không được tính ngay. Bạn cần chạm thêm lần thứ 2 (trong khoảng 1-3 giây) để xác nhận đó là hành động có ý thức.
             <ul style="font-size: 12px; margin-top: 5px; color: var(--text-light);">
-                <li>Only the timestamp of the <strong>first</strong> tap is recorded.</li>
-                <li>Confirmation mode only applies when the mindfulness level is at <strong>Low</strong>.</li>
-				<li>Note: Haptic feedback requires a device that supports vibration mode.</li>
-            </ul>
+                <li>Chỉ ghi nhận thời gian của lần chạm <strong>đầu tiên</strong>.</li>
+                <li>Chế độ xác nhận chỉ áp dụng khi mức chú tâm đang ở mức <strong>Thấp</strong>.</li>
+				<li>Lưu ý: Phản hồi xúc giác yêu cầu thiết bị có hỗ trợ chế độ rung.</li>
+
+				</ul>
         </li>
     </ul>
 </div>
-
-<div style="text-align: center; margin: 15px 0;">
-    <img src="./images/2en.png" alt="Meditation Mode" style="max-width: 300px; width: 100%; border-radius: 8px; border: 1px solid var(--border);">
-</div>
-
-
+ <div style="text-align: center; margin: 15px 0;">
+                <img src="./images/2vi.png" alt="Meditation Mode" style="max-width: 300px; width: 100%; border-radius: 8px; border: 1px solid var(--border);">
+            </div>
             <ul style="padding-left: 20px;">
-                <li><strong>Manual Entry:</strong> Forgot to start the timer? You can manually log a session or edit previous records.</li>
-            </ul>
-            <h4 style="color: var(--primary); margin-top: 15px;">3. Statistics & Data Analysis</h4>
+			                <li><strong>Nhập liệu thủ công:</strong> Quên bấm giờ? Bạn có thể tự nhập lại phiên thiền hoặc sửa đổi các ghi chép cũ.</li>
+
+			
+            <h4 style="color: var(--primary); margin-top: 15px;">3. Báo Cáo & Phân Tích Số Liệu</h4>
             <ul style="padding-left: 20px;">
-                <li><strong>Dashboard:</strong> View today's progress relative to your set goals.</li>
-                <li><strong>Practice Calendar:</strong> A grid heatmap showing daily practice intensity. More colors represent longer practice durations.</li>
-                <li><strong>Visual Charts:</strong>
+                <li><strong>Bảng nhật ký:</strong> Xem tiến độ ngày hôm nay so với mục tiêu đề ra.</li>
+                <li><strong>Lịch tu tập:</strong> Biểu đồ dạng lưới hiển thị mức độ tu tập theo ngày. Màu càng nhiều thể hiện thời gian tu tập càng nhiều.</li>
+                <li><strong>Biểu đồ trực quan:</strong>
                     <ul>
-                        <li><strong>Session Graph:</strong> Review mindfulness levels <em>within a specific session</em> (line chart).</li>
-                        <li><strong>Weekly/Monthly Statistics:</strong> Compare performance over real-time intervals.</li>
-                        <li><strong>🔥 Pro Chart:</strong> The "Advanced" tab displays the distribution of focus level (High/Low) over weeks.</li>
+                        <li><strong>Biểu đồ phiên:</strong> Xem lại mức độ chánh niệm <em>trong từng thời thiền</em> (biểu đồ đường).</li>
+                        <li><strong>Báo cáo Tuần/Tháng:</strong> So sánh hiệu suất theo thời gian thực.</li>
+                        <li><strong>🔥 Biểu đồ Chuyên sâu:</strong> Tab "Chuyên sâu" hiển thị biểu đồ phân bố mức độ chú tâm (Cao/Thấp) qua các tuần.</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h4 style="color: var(--primary); margin-top: 15px;">4. Phân Tích Thiền Tập</h4>
+            <p>Tab <strong>"Phân tích"</strong> giúp bạn soi chiếu lại chất lượng tâm trong các thời thiền với độ chính xác cao hơn.</p>
+            <ul style="padding-left: 20px;">
+                <li><strong>Phân tích theo từng mục tiêu:</strong> Bạn có thể chọn xem số liệu của riêng "Thiền Tọa" hay "Thiền Hành" để so sánh sự tiến bộ của từng phương pháp tu tập.</li>
+                
+                <li style="margin-top: 10px;">
+                    <strong> Ngưỡng mất tập trung:</strong>
+                    <p style="font-size: 13px; color: var(--text-light); margin-top: 5px;">
+                        Đây là khái niệm quan trọng nhất để tính toán "Chất lượng thiền".
+                    </p>
+                    <div style="background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 6px; border-left: 3px solid var(--warning); margin: 5px 0;">
+                        <em>"Ngưỡng mất tập trung" là khoảng thời gian tối đa cho phép giữa hai lần ghi nhận; nếu vượt quá thời gian này, hệ thống sẽ xem là bạn đang mất tập trung.</em>
+                    </div>
+                    <ul style="margin-top: 5px;">
+                        <li><strong>Cơ chế hoạt động:</strong> Ví dụ bạn đặt ngưỡng là <strong>12 giây</strong>.
+                            <ul>
+                                <li>Nếu bạn chạm màn hình sau <strong>5 giây</strong>: Toàn bộ thời gian đó là Tỉnh thức.</li>
+                                <li>Nếu bạn chạm sau <strong>20 giây</strong>: Hệ thống hiểu rằng bạn đã lơ là hoặc hôn trầm mất <strong>8 giây</strong> (20 - 12 = 8).</li>
+                            </ul>
+                        </li>
+                        <li><strong>Tùy chỉnh riêng biệt:</strong> Mỗi loại thiền cần một nhịp độ khác nhau. Bạn có thể cài đặt ngưỡng thấp (ví dụ 5s) cho các bài tập ghi nhận nhanh, hoặc ngưỡng cao (30s) cho các bài tập định tâm sâu hơn. Hệ thống sẽ tự động nhớ cài đặt này cho từng mục tiêu.</li>
                     </ul>
                 </li>
             </ul>
 
-            <h4 style="color: var(--primary); margin-top: 15px;">4. Meditation Analytics</h4>
-            <p>The <strong>"Analytics"</strong> tab helps you reflect on the quality of your mind during meditation sessions with higher precision.</p>
+            <h4 style="color: var(--primary); margin-top: 15px;">5. Riêng Tư & An Toàn Dữ Liệu</h4>
             <ul style="padding-left: 20px;">
-                <li><strong>Goal-specific analysis:</strong> You can view data for specific goals (e.g., "Sitting Meditation" or "Walking Meditation") to compare the progress of different practices.</li>
-                
-                <li style="margin-top: 10px;">
-                    <strong> Distraction Threshold:</strong>
-                    <p style="font-size: 13px; color: var(--text-light); margin-top: 5px;">
-                        This is the most important concept for calculating your "Meditation Quality."
-                    </p>
-                    <div style="background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 6px; border-left: 3px solid var(--warning); margin: 5px 0;">
-            <em>"Distraction Threshold" is the maximum allowed gap between two mindfulness logs; if this time is exceeded, the system considers you were distracted.</em>
-        </div>
-        <ul style="margin-top: 5px;">
-            <li><strong>How it works:</strong> For example, if you set the threshold to <strong>12 seconds</strong>:
-                <ul>
-                    <li>If you tap after <strong>5 seconds</strong>: The entire duration is counted as Mindful.</li>
-                    <li>If you tap after <strong>20 seconds</strong>: The system calculates that you were distracted or drowsy for <strong>8 seconds</strong> (20 - 12 = 8).</li>
-                </ul>
-            </li>
-            <li><strong>Individual Customization:</strong> Different practices require different paces. You can set a low threshold (e.g., 5s) for fast-noting exercises, or a higher threshold (e.g., 30s) for deep concentration. The system remembers these settings for each goal individually.</li>
-        </ul>
-    </li>
-</ul>
-
-            <h4 style="color: var(--primary); margin-top: 15px;">5. Privacy & Data Security</h4>
-            <ul style="padding-left: 20px;">
-                <li><strong>Fully Offline:</strong> 100% of data is stored directly in your browser. No data is sent to any server.</li>
-                <li><strong>Backup & Restore:</strong> Easily export data to a <code>.json</code> file for safekeeping or to transfer to another device.</li>
+                <li><strong>Offline Hoàn Toàn:</strong> 100% dữ liệu được lưu trữ trực tiếp trên trình duyệt và thiết bị của bạn. Không có dữ liệu nào được gửi về máy chủ.</li>
+                <li><strong>Sao lưu & Khôi phục:</strong> Dễ dàng xuất dữ liệu ra file <code>.json</code> để cất giữ hoặc chuyển sang thiết bị khác.</li>
             </ul>
 
             <hr style="border: 0; border-top: 1px solid var(--border); margin: 25px 0;">
-<h3 style="color: var(--text); margin-top: 20px;">✨ The Pāramī System</h3>
+<h3 style="color: var(--text); margin-top: 20px;">✨ Hệ Thống Pāramī</h3>
 
-<p> The achievements system is organized into Pāramīs (Perfections) to encourage your diligence. Here are some key milestones:</p>
+<p>Các thành tựu trong việc thực hành thiền sẽ được phân loại thành các Pāramī (Ba-la-mật) để khích lệ sự tinh tấn. Dưới đây là một số cột mốc tiêu biểu:</p>
 
-            <p style="margin-top: 15px;"><strong>🔥 Consistency Streak:</strong></p> <table class="intro-table" style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px;"> <thead> <tr style="background: var(--bg);"> <th style="padding: 8px; border: 1px solid var(--border); text-align: left;">Pāramī</th> <th style="padding: 8px; border: 1px solid var(--border); text-align: left;">Condition</th> <th style="padding: 8px; border: 1px solid var(--border); text-align: left;">Meaning</th> </tr> </thead> <tbody> <tr><td style="padding: 8px; border: 1px solid var(--border);">Walking Path</td><td style="padding: 8px; border: 1px solid var(--border);">3 Days</td><td style="padding: 8px; border: 1px solid var(--border);">The practitioner's first steps.</td></tr> <tr><td style="padding: 8px; border: 1px solid var(--border);">Blessings</td><td style="padding: 8px; border: 1px solid var(--border);">7 Days</td><td style="padding: 8px; border: 1px solid var(--border);">Accumulating wholesome roots in a week.</td></tr> <tr><td style="padding: 8px; border: 1px solid var(--border);">Willpower</td><td style="padding: 8px; border: 1px solid var(--border);">30 Days</td><td style="padding: 8px; border: 1px solid var(--border);">Practice has become a habit.</td></tr> <tr><td style="padding: 8px; border: 1px solid var(--border);">Satipaṭṭhāna</td><td style="padding: 8px; border: 1px solid var(--border);">49 Days</td><td style="padding: 8px; border: 1px solid var(--border);">Seven weeks of diligent practice.</td></tr> <tr><td style="padding: 8px; border: 1px solid var(--border);">Great Hero</td><td style="padding: 8px; border: 1px solid var(--border);">90 Days</td><td style="padding: 8px; border: 1px solid var(--border);">Extraordinary power of diligence.</td></tr> <tr><td style="padding: 8px; border: 1px solid var(--border);">Timeless</td><td style="padding: 8px; border: 1px solid var(--border);">365 Days</td><td style="padding: 8px; border: 1px solid var(--border);">Limitless perseverance.</td></tr> </tbody> </table>
+<p style="margin-top: 15px;"><strong>🔥 Chuỗi Tinh Tấn (Liên tục):</strong></p>
+<table class="intro-table" style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px;">
+    <thead>
+        <tr style="background: var(--bg);">
+            <th style="padding: 8px; border: 1px solid var(--border); text-align: left;">Pāramī</th>
+            <th style="padding: 8px; border: 1px solid var(--border); text-align: left;">Điều kiện</th>
+            <th style="padding: 8px; border: 1px solid var(--border); text-align: left;">Ý nghĩa</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td style="padding: 8px; border: 1px solid var(--border);">Kinh Hành</td><td style="padding: 8px; border: 1px solid var(--border);">3 ngày</td><td style="padding: 8px; border: 1px solid var(--border);">Bước đi đầu tiên của hành giả.</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid var(--border);">Phước Báu</td><td style="padding: 8px; border: 1px solid var(--border);">7 ngày</td><td style="padding: 8px; border: 1px solid var(--border);">Tích lũy thiện pháp trong một tuần.</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid var(--border);">Như Ý Túc</td><td style="padding: 8px; border: 1px solid var(--border);">30 ngày</td><td style="padding: 8px; border: 1px solid var(--border);">Thói quen tu tập đã vững vàng.</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid var(--border);">Tứ Niệm Xứ</td><td style="padding: 8px; border: 1px solid var(--border);">49 ngày</td><td style="padding: 8px; border: 1px solid var(--border);">Bảy tuần tu tập miên mật.</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid var(--border);">Đại Hùng</td><td style="padding: 8px; border: 1px solid var(--border);">90 ngày</td><td style="padding: 8px; border: 1px solid var(--border);">Sức mạnh tinh tấn phi thường.</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid var(--border);">Vô Thủy</td><td style="padding: 8px; border: 1px solid var(--border);">365 ngày</td><td style="padding: 8px; border: 1px solid var(--border);">Sự kiên trì không giới hạn.</td></tr>
+    </tbody>
+</table>
 
-<p><strong>🌱 Total Mindfulness:</strong></p> <table class="intro-table" style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px;"> <thead> <tr style="background: var(--bg);"> <th style="padding: 8px; border: 1px solid var(--border); text-align: left;">Pāramī</th> <th style="padding: 8px; border: 1px solid var(--border); text-align: left;">Count</th> </tr> </thead> <tbody> <tr><td style="padding: 8px; border: 1px solid var(--border);">One-Pointedness</td><td style="padding: 8px; border: 1px solid var(--border);">100</td></tr> <tr><td style="padding: 8px; border: 1px solid var(--border);">Purification</td><td style="padding: 8px; border: 1px solid var(--border);">500</td></tr> <tr><td style="padding: 8px; border: 1px solid var(--border);">Contentment</td><td style="padding: 8px; border: 1px solid var(--border);">1,000</td></tr> <tr><td style="padding: 8px; border: 1px solid var(--border);">Offering</td><td style="padding: 8px; border: 1px solid var(--border);">10,000</td></tr> <tr><td style="padding: 8px; border: 1px solid var(--border);">Bliss</td><td style="padding: 8px; border: 1px solid var(--border);">50,000</td></tr> <tr><td style="padding: 8px; border: 1px solid var(--border);">Suchness</td><td style="padding: 8px; border: 1px solid var(--border);">100,000</td></tr> </tbody> </table>
+<p><strong>🌱 Tổng số lần Chánh niệm:</strong></p>
+<table class="intro-table" style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px;">
+    <thead>
+        <tr style="background: var(--bg);">
+            <th style="padding: 8px; border: 1px solid var(--border); text-align: left;">Pāramī</th>
+            <th style="padding: 8px; border: 1px solid var(--border); text-align: left;">Số Chánh Niệm</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td style="padding: 8px; border: 1px solid var(--border);">Nhất Tâm</td><td style="padding: 8px; border: 1px solid var(--border);">100</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid var(--border);">Thanh Tịnh</td><td style="padding: 8px; border: 1px solid var(--border);">500</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid var(--border);">Biết Đủ</td><td style="padding: 8px; border: 1px solid var(--border);">1,000</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid var(--border);">Cúng Dường</td><td style="padding: 8px; border: 1px solid var(--border);">10,000</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid var(--border);">An Lạc</td><td style="padding: 8px; border: 1px solid var(--border);">50,000</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid var(--border);">Chân Như</td><td style="padding: 8px; border: 1px solid var(--border);">100,000</td></tr>
+    </tbody>
+</table>
 
-<p><strong>⏳ Total Practice Time:</strong></p> <table class="intro-table" style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px;"> <thead> <tr style="background: var(--bg);"> <th style="padding: 8px; border: 1px solid var(--border); text-align: left;">Pāramī</th> <th style="padding: 8px; border: 1px solid var(--border); text-align: left;">Duration</th> </tr> </thead> <tbody> <tr><td style="padding: 8px; border: 1px solid var(--border);">Present</td><td style="padding: 8px; border: 1px solid var(--border);">1 hour</td></tr> <tr><td style="padding: 8px; border: 1px solid var(--border);">Mindfulness</td><td style="padding: 8px; border: 1px solid var(--border);">10 hours</td></tr> <tr><td style="padding: 8px; border: 1px solid var(--border);">Stream Entry</td><td style="padding: 8px; border: 1px solid var(--border);">50 hours</td></tr> <tr><td style="padding: 8px; border: 1px solid var(--border);">Ardor</td><td style="padding: 8px; border: 1px solid var(--border);">100 hours</td></tr> <tr><td style="padding: 8px; border: 1px solid var(--border);">The Void</td><td style="padding: 8px; border: 1px solid var(--border);">1,000 hours</td></tr> </tbody> </table>
-            
-           
+<p><strong>⏳ Tổng thời gian tu tập:</strong></p>
+<table class="intro-table" style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px;">
+    <thead>
+        <tr style="background: var(--bg);">
+            <th style="padding: 8px; border: 1px solid var(--border); text-align: left;">Pāramī</th>
+            <th style="padding: 8px; border: 1px solid var(--border); text-align: left;">Thời lượng</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td style="padding: 8px; border: 1px solid var(--border);">Hiện Tại</td><td style="padding: 8px; border: 1px solid var(--border);">1 giờ</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid var(--border);">Chánh Niệm</td><td style="padding: 8px; border: 1px solid var(--border);">10 giờ</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid var(--border);">Nhập Dòng</td><td style="padding: 8px; border: 1px solid var(--border);">50 giờ</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid var(--border);">Nhiệt Thành</td><td style="padding: 8px; border: 1px solid var(--border);">100 giờ</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid var(--border);">Hư Không</td><td style="padding: 8px; border: 1px solid var(--border);">1,000 giờ</td></tr>
+    </tbody>
+</table>
+
             <div style="background: rgba(251, 191, 36, 0.1); border: 1px solid var(--warning); padding: 15px; border-radius: 8px; color: #fbbf24; font-size: 13px;">
-                <strong>⚠️ Important Data Notice:</strong>
+                <strong>⚠️ Lưu Ý Quan Trọng Về Dữ Liệu:</strong>
                 <ul style="margin: 5px 0 0 15px;">
-                    <li>Data is stored in the browser's <strong>IndexedDB</strong> (Secure & Large capacity).</li>
-                    <li><strong>Do not clear browser history/cache</strong> without backing up, or your data will be lost.</li>
-                    <li><strong>How to Backup:</strong> Go to the left sidebar, select <strong>"Backup"</strong> to download the file.</li>
-                    <li><strong>How to Restore:</strong> Select <strong>"Restore"</strong> and upload your backup file.</li>
+                    <li>Dữ liệu được lưu trong <strong>IndexedDB</strong> của trình duyệt (An toàn & dung lượng lớn).</li>
+                    <li><strong>Không xóa lịch sử/cache trình duyệt</strong> nếu chưa sao lưu, dữ liệu sẽ bị mất.</li>
+                    <li><strong>Cách Sao Lưu:</strong> Vào menu bên trái, chọn <strong>"Sao lưu"</strong> để tải file về máy.</li>
+                    <li><strong>Cách Khôi Phục:</strong> Chọn <strong>"Khôi phục"</strong> và tải lên file backup đã có.</li>
                 </ul>
             </div>
             
              <div style="margin-top: 20px; text-align: center; color: var(--text-light); font-size: 12px; border-top: 1px solid var(--border); padding-top: 10px;">
-                <strong>Technologies:</strong> HTML5, CSS3, JS (ES6+).<br>
-                <strong>Libraries:</strong> <a href="https://www.chartjs.org/" target="_blank" style="color: var(--primary); text-decoration: none;">Chart.js</a>, <a href="https://fontawesome.com/" target="_blank" style="color: var(--primary); text-decoration: none;">FontAwesome</a>.<br>
-                Download Link & Source Code: <a href="https://github.com/buddhanussati/meditator-journal/releases"><b>here.</b></a> Wishing you peace and diligence!
+                <strong>Công nghệ:</strong> HTML5, CSS3, JS (ES6+).<br>
+                <strong>Thư viện:</strong> <a href="https://www.chartjs.org/" target="_blank" style="color: var(--primary); text-decoration: none;">Chart.js</a>, <a href="https://fontawesome.com/" target="_blank" style="color: var(--primary); text-decoration: none;">FontAwesome</a>.<br>
+                Link Tải & Mã Nguồn: <a href="https://github.com/buddhanussati/nhatky-hanhgia/releases"><b>tại đây.</b></a> Chúc bạn an lạc và tinh tấn!
             </div>
         </div>
         
-        <div style="padding: 15px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 10px; background: var(--surface); border-radius: 0 0 16px 16px;">
+       <div style="padding: 15px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 10px; background: var(--surface); border-radius: 0 0 16px 16px;">
     
-    <button class="btn btn-secondary" onclick="app.resetApp()" style="color: var(--danger); margin-right: auto;">Reset
+    <button class="btn btn-secondary" onclick="app.resetApp()" style="color: var(--danger); margin-right: auto;">Đặt lại
     </button>
     
-    <button class="btn btn-secondary" onclick="app.closeIntroModal()">Close</button>
+    <button class="btn btn-secondary" onclick="app.closeIntroModal()">Đóng</button>
 </div>
     </div>
 </div>
     <audio id="bell" src="./audio/bell.mp3" preload="auto"></audio>
+
+       <script src="./js/nh.js"></script>
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw2.js')
-        .then(reg => console.log('PWA ready:', reg.scope))
-        .catch(err => console.log('PWA error:', err));
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('PWA đã sẵn sàng:', reg.scope))
+        .catch(err => console.log('Lỗi PWA:', err));
     });
   }
 </script>
-   <script src="./js/mj.js"></script>
+
 </body>
 </html>
