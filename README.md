@@ -63,7 +63,7 @@ Chạm nhẹ màn hình để ghi nhận sự chú tâm vào đề mục thiền
 * **Biểu đồ trực quan:**
 * **Biểu đồ phiên:** Xem lại mức độ chánh *trong từng thời thiền* (biểu đồ đường).
 * **Báo cáo Tuần/Tháng:** So sánh hiệu suất theo thời gian thực.
-* **💎 Biểu đồ Chuyên sâu:** Tab "Chuyên sâu" hiển thị biểu đồ phân bố mức độ chú tâm (Cao/Thấp) qua các tuần.
+* **Biểu đồ Chú tâm:** Tab "Khám phá" hiển thị biểu đồ phân bố mức độ chú tâm (Cao/Thấp) qua các tuần.
 
 ### 4. Phân Tích Thiền Tập
 
