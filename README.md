@@ -22,10 +22,10 @@
 
 * **Hai loại mục tiêu chính:**
 * **ॐ Thiền Định:** Theo dõi thời gian ngồi thiền và đếm số lần ghi nhận chánh niệm ("Sati"). Giao diện có vòng tròn hít thở để hỗ trợ định tâm.
-* **⚡ Công Việc:** Đồng hồ đếm ngược truyền thống dùng cho công việc, học tập (tương tự Pomodoro) hoặc các thói quen khác.
+* **⚡ Tu tập:** Đồng hồ đếm ngược truyền thống dùng cho công việc, học tập hoặc các bài thực hành khác.
 
 
-* **Tùy biến:** Tự đặt mục tiêu hàng ngày (số phút), thời gian cần dành để hoàn thành mục tiêu, màu sắc đại diện và danh mục quản lý.
+* **Tùy biến:** Tự đặt mục tiêu hàng ngày, thời gian cần dành để hoàn thành mục tiêu, màu sắc đại diện và danh mục quản lý.
 
 ### 2. Cấu hình Tương Tác
 
