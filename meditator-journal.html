@@ -494,14 +494,14 @@
                 
                 <div class="form-group">
     <label id="s-minutes-label">Duration (Minutes)</label>
-    <input type="number" id="s-minutes" class="form-control" required min="1" />
+    <input type="number" id="s-minutes" placeholder="0" class="form-control" required min="1" />
 </div>
 <div class="form-group" id="s-mindfulness-group" style="display:none; background: rgba(167, 139, 250, 0.1); padding: 10px; border-radius: 8px; border: 1px solid rgba(167, 139, 250, 0.3);">
     <label style="color: var(--zen);">Mindfulness (Count)</label>
     <input type="number" id="s-mindfulness" class="form-control" min="0" value="0" />
 	    <div style="margin-top: 10px; border-top: 1px solid rgba(167, 139, 250, 0.3); padding-top: 10px;">
         <label style="color: var(--zen); font-size: 12px;">Distraction Threshold (secs)</label>
-        <input type="number" id="s-threshold" class="form-control" min="1" value="12" style="background: rgba(0,0,0,0.2);" />
+        <input type="number" id="s-threshold" class="form-control" min="0.1" step="0.1" value="12" style="background: rgba(0,0,0,0.2);" />
     </div>
 </div>
                 <div class="form-group">
