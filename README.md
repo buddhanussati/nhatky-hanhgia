@@ -43,8 +43,17 @@ Chạm nhẹ màn hình để ghi nhận sự chú tâm vào đề mục thiền
 
 * **👆⏳ Ấn giữ = Tỉnh Giác (nhận biết trạng thái tâm, phát hiện xao nhãng):**
 Ấn và giữ màn hình để ghi nhận Tỉnh Giác. Tỉnh giác là khi bạn **nhận biết** được trạng thái tâm mình (ví dụ: chợt nhận ra mình đang phóng tâm, đang có tạp niệm, hoặc đang mất tập trung trên đề mục thiền). Đây là khoảnh khắc của sự nhận biết và quay trở lại.
+> **Chế độ Nhắc:** Nếu bạn tiếp tục ấn giữ lâu hơn sau khi đã ghi nhận tỉnh giác **(vượt ngưỡng mất tập trung)**, hệ thống sẽ kích hoạt *rung ngẫu nhiên* để giúp bạn tỉnh thức. Vì đây là sự hỗ trợ từ hệ thống, bạn sẽ không được tính điểm tỉnh giác cho lần ghi nhận đó.
 
-#### Chế độ Xác nhận
+#### 🔔 Chế độ Thiền Hướng Dẫn
+
+*Đóng vai trò như một tiếng gõ nhẹ của thiền sư để đánh thức sự tỉnh giác của bạn.* 
+
+* Hệ thống sử dụng **Khoảng cách mỗi lần rung** bạn thiết lập để duy trì nhịp độ dẫn thiền.
+* Tín hiệu rung (nhẹ và đa dạng) được **thiết kế ngẫu nhiên** về cả cường độ và thời điểm (biến thiên xoay quanh khoảng bạn chọn). Điều này giúp tâm luôn tỉnh giác và ngăn chặn sự hình thành phản xạ vô thức hoặc trạng thái "tự động".
+* **Nhiệm vụ của bạn:** Mỗi khi cảm nhận được nhịp rung, hãy dùng nó như một mỏ neo — kiểm tra xem tâm mình đang ở đâu, kéo nó về với hiện tại, và ghi nhận chánh niệm.
+
+#### ✔️ Chế độ Xác nhận
 
 *Dành cho người dùng hay chạm máy vô thức.* Khi bật chế độ này, lần chạm đầu tiên sẽ không được tính ngay. Bạn cần chạm thêm lần thứ 2 (trong khoảng 1-3 giây) để xác nhận đó là hành động có ý thức.
 
