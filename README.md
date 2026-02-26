@@ -50,7 +50,7 @@ Chạm nhẹ màn hình để ghi nhận sự chú tâm vào đề mục thiền
 *Đóng vai trò như một tiếng gõ nhẹ của thiền sư để đánh thức sự tỉnh giác của bạn.* 
 
 * Hệ thống sử dụng **Khoảng cách mỗi lần rung** bạn thiết lập để duy trì nhịp độ dẫn thiền.
-* Tín hiệu rung (nhẹ và đa dạng) được **thiết kế ngẫu nhiên** về cả cường độ và thời điểm (biến thiên xoay quanh khoảng bạn chọn). Điều này giúp tâm luôn tỉnh giác và ngăn chặn sự hình thành phản xạ vô thức hoặc trạng thái "tự động".
+* Tín hiệu rung (nhẹ và đa dạng) được **thiết kế ngẫu nhiên** về cường độ, điều này giúp tâm luôn tỉnh giác và ngăn chặn sự hình thành phản xạ vô thức hoặc trạng thái "tự động".
 * **Nhiệm vụ của bạn:** Mỗi khi cảm nhận được nhịp rung, hãy dùng nó như một mỏ neo — kiểm tra xem tâm mình đang ở đâu, kéo nó về với hiện tại, và ghi nhận chánh niệm.
 
 #### ✔️ Chế độ Xác nhận
